@@ -82,7 +82,7 @@ export default async function CashPage() {
 
             <Link
               href="/app/pos"
-              className="px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-[var(--primary-accent-text)] bg-[var(--primary-accent)] hover:-translate-y-0.5 active:scale-95 transition shadow-[var(--primary-accent-shadow)] flex items-center gap-2 select-none"
+              className="px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-[var(--primary-accent-text)] bg-[var(--primary-accent)] hover:-translate-y-0.5 active:scale-95 transition shadow-sm hover:shadow-md flex items-center gap-2 select-none"
             >
               Ir al Punto de Venta (POS) →
             </Link>

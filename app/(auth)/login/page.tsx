@@ -12,14 +12,10 @@ export default async function LoginPage() {
 
   return (
     <main className="min-h-screen flex flex-col justify-between p-6 sm:p-12 relative overflow-hidden bg-[#0A0E14] text-white">
-      {/* Decorative Cyber-Lime & Obsidian Ambient Lights */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[650px] h-[350px] bg-[#C6F827]/10 blur-[140px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#C6F827]/5 blur-[120px] rounded-full pointer-events-none" />
-
       {/* Top Bar */}
       <header className="w-full max-w-5xl mx-auto flex items-center justify-between relative z-10">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="size-9 rounded-xl bg-[#0A0E14] border border-[#1E293B] flex items-center justify-center shadow-[0_0_15px_rgba(198,248,39,0.3)] group-hover:scale-105 transition-transform shrink-0">
+          <div className="size-9 rounded-xl bg-[#0A0E14] border border-[#1E293B] flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform shrink-0">
             <span className="font-black text-lg bg-gradient-to-br from-[#C6F827] via-[#10B981] to-[#00FF88] bg-clip-text text-transparent flex items-baseline leading-none select-none pl-0.5">
               V<span className="text-[11px] font-black text-[#C6F827] ml-0.5">r</span>
             </span>
@@ -38,10 +34,10 @@ export default async function LoginPage() {
 
       {/* Centered Login Card */}
       <div className="w-full max-w-md mx-auto my-auto py-8 relative z-10">
-        <div className="border border-[#C6F827]/20 rounded-3xl bg-[#121824]/90 backdrop-blur-2xl p-8 sm:p-10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] space-y-7">
+        <div className="border border-[#1E293B] rounded-3xl bg-[#121824] p-8 sm:p-10 shadow-2xl space-y-7">
           <div className="space-y-3 text-center sm:text-left">
             <div className="flex items-center justify-between">
-              <div className="w-12 h-12 rounded-2xl bg-[#C6F827]/15 border border-[#C6F827]/30 flex items-center justify-center text-[#C6F827] shadow-[0_0_15px_rgba(198,248,39,0.2)]">
+              <div className="w-12 h-12 rounded-2xl bg-[#0A0E14] border border-[#1E293B] flex items-center justify-center text-[#C6F827] shadow-sm">
                 <span className="font-black text-xl">⚡</span>
               </div>
               <span className="text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full bg-[#C6F827]/15 text-[#C6F827] border border-[#C6F827]/30">

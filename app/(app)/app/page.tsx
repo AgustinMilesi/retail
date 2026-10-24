@@ -98,7 +98,7 @@ export default async function OverviewPage() {
           </div>
           <Link
             href={openSession ? "/app/pos" : "/app/cash"}
-            className="px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider text-[#0A0E14] bg-gradient-to-r from-[#C6F827] to-[#10B981] shadow-[0_8px_20px_rgba(198,248,39,0.32)] hover:-translate-y-0.5 active:scale-95 transition-all flex items-center gap-1.5"
+            className="px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider text-[#0A0E14] bg-gradient-to-r from-[#C6F827] to-[#10B981] shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all flex items-center gap-1.5"
           >
             {openSession ? t.openPosTill : t.openRegisterBtn}
           </Link>
@@ -109,10 +109,6 @@ export default async function OverviewPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         {/* VOUT Obsidian Hero Card: Today's Revenue (Span 6) */}
         <div className="lg:col-span-6 p-7 rounded-3xl relative overflow-hidden flex flex-col justify-between bg-gradient-to-br from-[#121824] via-[#0F1520] to-[#0A0E14] border border-[#1E293B] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.7)] hover:border-[#C6F827]/40 group transition-all duration-200">
-          {/* Subtle decorative lights inside card */}
-          <div className="absolute -top-12 -right-12 size-40 bg-[#C6F827]/5 rounded-full blur-2xl pointer-events-none" />
-          <div className="absolute -bottom-16 -left-16 size-48 bg-[#10B981]/5 rounded-full blur-2xl pointer-events-none" />
-
           <div>
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#94A3B8]">
@@ -158,7 +154,7 @@ export default async function OverviewPage() {
               <p className="text-3xl font-extrabold text-white tracking-tight">{todaySales._count}</p>
               <p className="text-xs text-[#94A3B8]">{t.completedSales}</p>
             </div>
-            <div className="size-12 rounded-2xl bg-[#0A0E14] border border-[#1E293B] text-[#C6F827] flex items-center justify-center font-bold group-hover:scale-110 group-hover:border-[#C6F827]/60 group-hover:shadow-[0_0_15px_rgba(198,248,39,0.25)] transition-all">
+            <div className="size-12 rounded-2xl bg-[#0A0E14] border border-[#1E293B] text-[#C6F827] flex items-center justify-center font-bold group-hover:scale-110 group-hover:border-[#C6F827]/60 group-hover:shadow-md transition-all">
               <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
@@ -174,7 +170,7 @@ export default async function OverviewPage() {
               <p className="text-3xl font-extrabold text-white tracking-tight">{unread}</p>
               <p className="text-xs text-[#94A3B8]">{t.customerInbox}</p>
             </div>
-            <div className="size-12 rounded-2xl bg-[#0A0E14] border border-[#1E293B] text-[#C6F827] flex items-center justify-center font-bold group-hover:scale-110 group-hover:border-[#C6F827]/60 group-hover:shadow-[0_0_15px_rgba(198,248,39,0.25)] transition-all">
+            <div className="size-12 rounded-2xl bg-[#0A0E14] border border-[#1E293B] text-[#C6F827] flex items-center justify-center font-bold group-hover:scale-110 group-hover:border-[#C6F827]/60 group-hover:shadow-md transition-all">
               <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75A2.25 2.25 0 014.5 4.5h15a2.25 2.25 0 012.25 2.25z" />
               </svg>
@@ -190,7 +186,7 @@ export default async function OverviewPage() {
               <p className="text-3xl font-extrabold text-white tracking-tight">{contacts}</p>
               <p className="text-xs text-[#94A3B8]">{t.customersAndLeads}</p>
             </div>
-            <div className="size-12 rounded-2xl bg-[#0A0E14] border border-[#1E293B] text-[#C6F827] flex items-center justify-center font-bold group-hover:scale-110 group-hover:border-[#C6F827]/60 group-hover:shadow-[0_0_15px_rgba(198,248,39,0.25)] transition-all">
+            <div className="size-12 rounded-2xl bg-[#0A0E14] border border-[#1E293B] text-[#C6F827] flex items-center justify-center font-bold group-hover:scale-110 group-hover:border-[#C6F827]/60 group-hover:shadow-md transition-all">
               <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>

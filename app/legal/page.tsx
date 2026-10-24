@@ -13,7 +13,7 @@ export default function LegalPage() {
         {/* Navigation Header */}
         <header className="flex items-center justify-between pb-6 border-b border-[#1E293B]">
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="size-9 rounded-2xl bg-[var(--primary-accent)] text-[var(--primary-accent-text)] flex items-center justify-center font-black text-sm shadow-[var(--primary-accent-shadow)] transition-transform group-hover:scale-105">
+            <div className="size-9 rounded-2xl bg-[var(--primary-accent)] text-[var(--primary-accent-text)] flex items-center justify-center font-black text-sm shadow-sm transition-transform group-hover:scale-105">
               V
             </div>
             <div>

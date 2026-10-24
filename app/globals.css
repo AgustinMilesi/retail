@@ -5,7 +5,7 @@
   --primary-accent: #c6f827;
   --primary-accent-hover: #b4e518;
   --primary-accent-gradient: linear-gradient(135deg, #c6f827 0%, #a3d915 100%);
-  --primary-accent-shadow: rgba(198, 248, 39, 0.35);
+  --primary-accent-shadow: rgba(0, 0, 0, 0.3);
   --primary-accent-rgb: 198, 248, 39;
   --primary-accent-text: #0a0e14;
 
@@ -43,7 +43,7 @@
   --primary-accent: #c6f827;
   --primary-accent-hover: #b4e518;
   --primary-accent-gradient: linear-gradient(135deg, #c6f827 0%, #10b981 100%);
-  --primary-accent-shadow: rgba(198, 248, 39, 0.35);
+  --primary-accent-shadow: rgba(0, 0, 0, 0.3);
   --primary-accent-rgb: 198, 248, 39;
   --primary-accent-text: #0a0e14;
 }
@@ -52,7 +52,7 @@
   --primary-accent: #00ff88;
   --primary-accent-hover: #00e57a;
   --primary-accent-gradient: linear-gradient(135deg, #00ff88 0%, #10b981 100%);
-  --primary-accent-shadow: rgba(0, 255, 136, 0.35);
+  --primary-accent-shadow: rgba(0, 0, 0, 0.3);
   --primary-accent-rgb: 0, 255, 136;
   --primary-accent-text: #0a0e14;
 }
@@ -61,7 +61,7 @@
   --primary-accent: #10b981;
   --primary-accent-hover: #059669;
   --primary-accent-gradient: linear-gradient(135deg, #34d399 0%, #059669 100%);
-  --primary-accent-shadow: rgba(16, 185, 129, 0.35);
+  --primary-accent-shadow: rgba(0, 0, 0, 0.3);
   --primary-accent-rgb: 16, 185, 129;
   --primary-accent-text: #0a0e14;
 }
@@ -70,7 +70,7 @@
   --primary-accent: #059669;
   --primary-accent-hover: #047857;
   --primary-accent-gradient: linear-gradient(135deg, #10b981 0%, #047857 100%);
-  --primary-accent-shadow: rgba(5, 150, 105, 0.35);
+  --primary-accent-shadow: rgba(0, 0, 0, 0.3);
   --primary-accent-rgb: 5, 150, 105;
   --primary-accent-text: #ffffff;
 }
@@ -84,7 +84,7 @@
   --primary-accent: #c6f827;
   --primary-accent-hover: #b4e518;
   --primary-accent-gradient: linear-gradient(135deg, #c6f827 0%, #10b981 100%);
-  --primary-accent-shadow: rgba(198, 248, 39, 0.35);
+  --primary-accent-shadow: rgba(0, 0, 0, 0.3);
   --primary-accent-rgb: 198, 248, 39;
   --primary-accent-text: #0a0e14;
 }
@@ -116,13 +116,13 @@ html, body {
   transform: translateY(-1px);
 }
 
-/* Accent Card (Reacts dynamically to the chosen color theme) */
+/* Accent Card */
 .clay-card-purple,
 .clay-card-accent {
   background: var(--primary-accent) !important;
   color: var(--primary-accent-text, #0a0e14) !important;
   border-radius: 1.5rem;
-  box-shadow: 0 12px 28px -6px var(--primary-accent-shadow);
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.4);
   transition: all 0.25s ease;
 }
 
@@ -131,11 +131,11 @@ html, body {
   color: inherit !important;
 }
 
-/* VOUT Action Buttons */
+/* VOUT Action Buttons - Clean Matte, Zero Neon Glow */
 .clay-btn {
   background: var(--primary-accent) !important;
   color: var(--primary-accent-text, #0a0e14) !important;
-  box-shadow: 0 10px 24px -4px var(--primary-accent-shadow);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -144,7 +144,7 @@ html, body {
 }
 
 .clay-btn:hover {
-  box-shadow: 0 14px 30px -4px var(--primary-accent-shadow);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35) !important;
   transform: translateY(-1px);
 }
 
@@ -156,7 +156,7 @@ html, body {
 .clay-pill-active {
   background: var(--primary-accent) !important;
   color: var(--primary-accent-text, #0a0e14) !important;
-  box-shadow: 0 8px 20px var(--primary-accent-shadow);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
 }
 
 .clay-pill-active * {

@@ -26,7 +26,7 @@ export default function Home() {
       {/* Top Header */}
       <header className="w-full max-w-6xl mx-auto flex items-center justify-between pb-6 border-b border-[#1E293B]">
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="size-10 rounded-2xl bg-[var(--primary-accent)] text-[var(--primary-accent-text)] flex items-center justify-center font-black text-base shadow-[var(--primary-accent-shadow)] transition-transform group-hover:scale-105">
+          <div className="size-10 rounded-2xl bg-[var(--primary-accent)] text-[var(--primary-accent-text)] flex items-center justify-center font-black text-base shadow-sm transition-transform group-hover:scale-105">
             V
           </div>
           <div>
@@ -58,7 +58,7 @@ export default function Home() {
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <Link
                 href="/demo"
-                className="px-6 py-3.5 rounded-2xl bg-[var(--primary-accent)] text-[var(--primary-accent-text)] font-black text-sm shadow-[var(--primary-accent-shadow)] transition flex items-center gap-2 group hover:opacity-95"
+                className="px-6 py-3.5 rounded-2xl bg-[var(--primary-accent)] text-[var(--primary-accent-text)] font-black text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5 transition flex items-center gap-2 group hover:opacity-95"
               >
                 <span>✨ Entrar como Invitado</span>
                 <span className="text-[10px] font-bold uppercase tracking-wider bg-black/20 dark:bg-white/20 px-2 py-0.5 rounded-full">
