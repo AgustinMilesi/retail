@@ -147,6 +147,15 @@ export function AppShell({
             </svg>
           </Link>
         </div>
+
+        <Link
+          href="/login"
+          onClick={() => setMobileOpen(false)}
+          className="w-full text-center text-[11px] font-semibold text-slate-400 hover:text-[var(--primary-accent)] py-1.5 px-2 rounded-xl border border-white/5 hover:border-[var(--primary-accent)]/30 transition block"
+          title="Ver pantalla de login"
+        >
+          🔑 Ver Pantalla de Login
+        </Link>
       </div>
     </div>
   );

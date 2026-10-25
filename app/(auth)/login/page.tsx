@@ -8,7 +8,7 @@ import { PreferencesControls } from "@/components/PreferencesControls";
 export const metadata: Metadata = { title: "Cuenta VOUT • Acceso al Sistema" };
 
 export default async function LoginPage() {
-  if (await getSession()) redirect("/app");
+  const session = await getSession();
 
   return (
     <main className="min-h-screen flex flex-col justify-between p-6 sm:p-12 relative overflow-hidden bg-[#0A0E14] text-white">
@@ -45,7 +45,25 @@ export default async function LoginPage() {
       </header>
 
       {/* Centered Login Card */}
-      <div className="w-full max-w-md mx-auto my-auto py-8 relative z-10">
+      <div className="w-full max-w-md mx-auto my-auto py-8 relative z-10 space-y-4">
+        {session && (
+          <div className="p-3.5 rounded-2xl bg-[#C6F827]/10 border border-[#C6F827]/30 flex items-center justify-between gap-3 shadow-lg">
+            <div className="flex items-center gap-2.5">
+              <span className="size-2 rounded-full bg-[#C6F827] animate-ping shrink-0" />
+              <div>
+                <p className="text-xs font-bold text-white">Sesión activa (Modo Demo)</p>
+                <p className="text-[11px] text-slate-400">Podés explorar el login o volver al sistema.</p>
+              </div>
+            </div>
+            <Link
+              href="/app"
+              className="px-3.5 py-1.5 rounded-xl bg-[#C6F827] text-[#0A0E14] font-black text-xs hover:bg-[#b0df1f] transition shrink-0"
+            >
+              Volver al Sistema →
+            </Link>
+          </div>
+        )}
+
         <div className="border border-[#1E293B] rounded-3xl bg-[#121824] p-8 sm:p-10 shadow-2xl space-y-7">
           <div className="space-y-3 text-center sm:text-left">
             <div className="flex items-center justify-between">
