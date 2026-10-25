@@ -182,10 +182,16 @@ export function AppShell({
           </button>
 
           <div className="flex items-center gap-2.5">
-            <span className="size-9 rounded-2xl bg-[#0A0E14] border border-[#1E293B] flex items-center justify-center shadow-[0_0_15px_rgba(198,248,39,0.25)] shrink-0">
-              <span className="font-black text-lg bg-gradient-to-br from-[#C6F827] via-[#10B981] to-[#00FF88] bg-clip-text text-transparent flex items-baseline leading-none select-none pl-0.5">
-                V<span className="text-[11px] font-black text-[#C6F827] ml-0.5">r</span>
-              </span>
+            <span className="size-9 rounded-2xl bg-[#0A0E14] border border-[#1E293B] flex items-center justify-center shrink-0 p-1.5 shadow-sm">
+              <svg viewBox="68 106 416 310" className="w-full h-full" fill="none">
+                <rect x="68" y="228" width="60" height="60" rx="6" fill="#E9E7E0" />
+                <rect x="132" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
+                <rect x="196" y="356" width="60" height="60" rx="6" fill="#E9E7E0" />
+                <rect x="260" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
+                <rect x="324" y="228" width="60" height="60" rx="6" fill="#C6F827" />
+                <rect x="390" y="166" width="46" height="46" rx="5" fill="#C6F827" />
+                <rect x="452" y="106" width="32" height="32" rx="4" fill="#C6F827" />
+              </svg>
             </span>
             <span className="text-[var(--text-main,#FFFFFF)] font-black text-base sm:text-lg tracking-tight truncate max-w-[200px] sm:max-w-xs">
               {organizationName}

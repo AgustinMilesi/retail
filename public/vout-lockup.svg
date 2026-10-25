@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 256" width="880" height="256" role="img" aria-labelledby="lk-dark-title">
+  <title id="lk-dark-title">VOUT Lockup Oficial Dark</title>
+  <rect width="880" height="256" fill="#0A0E14" />
+  <g id="symbol" transform="translate(16, 0)">
+    <rect x="24" y="104" width="32" height="32" fill="#E9E7E0" />
+    <rect x="58" y="138" width="32" height="32" fill="#E9E7E0" />
+    <rect x="92" y="172" width="32" height="32" fill="#E9E7E0" />
+    <rect x="126" y="138" width="32" height="32" fill="#E9E7E0" />
+    <rect x="160" y="104" width="32" height="32" fill="#C6F827" />
+    <rect x="195" y="71" width="24" height="24" fill="#C6F827" />
+    <rect x="228" y="39" width="16" height="16" fill="#C6F827" />
+  </g>
+  <g id="wordmark" fill-rule="evenodd">
+    <path id="w-v" d="M 300 68 L 328 68 L 360 156 L 392 68 L 420 68 L 374 188 L 346 188 Z" fill="#E9E7E0" />
+    <path id="w-o" d="M 462 68 H 514 A 34 34 0 0 1 548 102 V 154 A 34 34 0 0 1 514 188 H 462 A 34 34 0 0 1 428 154 V 102 A 34 34 0 0 1 462 68 Z M 464 96 A 14 14 0 0 0 454 110 V 146 A 14 14 0 0 0 464 160 H 512 A 14 14 0 0 0 522 146 V 110 A 14 14 0 0 0 512 96 Z" fill="#C6F827" />
+    <path id="w-u" d="M 556 68 H 582 V 150 A 16 16 0 0 0 598 166 H 634 A 16 16 0 0 0 650 150 V 68 H 676 V 154 A 36 36 0 0 1 640 188 H 592 A 36 36 0 0 1 556 154 Z" fill="#C6F827" />
+    <path id="w-t" d="M 684 68 H 706 V 44 H 732 V 68 H 776 V 94 H 732 V 152 A 16 16 0 0 0 748 168 H 776 V 188 H 742 A 38 38 0 0 1 706 150 V 94 H 684 Z" fill="#C6F827" />
+  </g>
+</svg>
