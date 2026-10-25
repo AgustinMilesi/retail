@@ -2,6 +2,8 @@
   "name": "retail",
   "version": "0.1.0",
   "private": true,
+  "license": "UNLICENSED",
+  "author": "Agustín Milesi <https://github.com/AgustinMilesi>",
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
@@ -43,3 +45,5 @@
     "node": ">=20.9.0"
   }
 }
+
+

@@ -62,6 +62,17 @@ npx prisma db push
 
 ---
 
+## ⚖️ Licencia y Propiedad Intelectual
+
+**Copyright © 2026 Agustín Milesi. Todos los derechos reservados.**
+
+Este código fuente, arquitectura, algoritmos de facturación POS y diseño son **software propietario y confidencial**.
+- Queda terminantemente prohibida su descarga, clonación, redistribución, sublicenciamiento o uso comercial sin autorización previa expresa por escrito.
+- La [demostración pública en vivo](https://milesi-erp.vercel.app) se ofrece únicamente para evaluación de la interfaz de usuario.
+- Consultas de licenciamiento privado o adquisición comercial: [Contacto](https://saas-am.vercel.app/contact).
+
+---
+
 <div align="center">
-  <p>© 2026 VOUT Retail · Managed Retail Cloud Infrastructure.</p>
+  <p>© 2026 Agustín Milesi · VOUT Retail · Managed Retail Cloud Infrastructure · All Rights Reserved</p>
 </div>

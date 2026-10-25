@@ -8,6 +8,7 @@ const baseHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  productionBrowserSourceMaps: false,
   poweredByHeader: false,
   async headers() {
     return [
