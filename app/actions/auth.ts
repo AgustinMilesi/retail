@@ -121,7 +121,7 @@ export async function guestLoginAction(): Promise<ActionResult> {
     const passwordHash = await hashPassword("GuestDemo2026!");
     user = await db.user.create({
       data: {
-        name: "Invitado Demo",
+        name: "Agustín Milesi",
         email: "demo@milesi-erp.com",
         passwordHash,
         memberships: {

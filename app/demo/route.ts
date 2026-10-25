@@ -24,7 +24,7 @@ export async function GET(request: Request) {
     const passwordHash = await hashPassword("GuestDemo2026!");
     user = await db.user.create({
       data: {
-        name: "Invitado Demo",
+        name: "Agustín Milesi",
         email: "demo@milesi-erp.com",
         passwordHash,
         memberships: {
@@ -65,6 +65,13 @@ export async function GET(request: Request) {
   const org = membership?.organization;
 
   if (org) {
+    if (user.name !== "Agustín Milesi") {
+      await db.user.update({
+        where: { id: user.id },
+        data: { name: "Agustín Milesi" },
+      });
+    }
+
     // 1. Seed Categories & Products if < 8 products
     const productCount = await db.product.count({
       where: { organizationId: org.id },
@@ -248,7 +255,7 @@ export async function GET(request: Request) {
           openedById: user.id,
           status: "OPEN",
           openingCents: BigInt(5000000), // $50.000 ARS
-          note: "Apertura automática Turno Mañana (Modo Demo)",
+          note: "Apertura Turno Mañana",
         },
       });
     }

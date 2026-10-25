@@ -290,8 +290,8 @@ export const translations = {
 
     // Landing Page
     landingLogin: "Iniciar Sesión",
-    landingDemoGuest: "✨ Entrar como Invitado",
-    landingDemoSub: "1-Click Demo",
+    landingDemoGuest: "🚀 Live Demo",
+    landingDemoSub: "En Vivo",
     landingCreateAccount: "Crear Cuenta VOUT",
     landingAccessConsole: "Acceder a Consola →",
     landingHeadlineA: "Sistema ágil de",
@@ -593,8 +593,8 @@ export const translations = {
 
     // Landing Page
     landingLogin: "Log In",
-    landingDemoGuest: "✨ Guest Demo",
-    landingDemoSub: "1-Click Demo",
+    landingDemoGuest: "🚀 Live Demo",
+    landingDemoSub: "Live",
     landingCreateAccount: "Create VOUT Account",
     landingAccessConsole: "Access Console →",
     landingHeadlineA: "Agile Point of",
@@ -896,8 +896,8 @@ export const translations = {
 
     // Landing Page
     landingLogin: "Iniciar Sessão",
-    landingDemoGuest: "✨ Entrar como Convidado",
-    landingDemoSub: "1-Click Demo",
+    landingDemoGuest: "🚀 Live Demo",
+    landingDemoSub: "Ao Vivo",
     landingCreateAccount: "Criar Conta VOUT",
     landingAccessConsole: "Acessar Console →",
     landingHeadlineA: "Sistema ágil de",
@@ -1199,8 +1199,8 @@ export const translations = {
 
     // Landing Page
     landingLogin: "登录",
-    landingDemoGuest: "✨ 访客体验",
-    landingDemoSub: "一键演示",
+    landingDemoGuest: "🚀 Live Demo",
+    landingDemoSub: "在线",
     landingCreateAccount: "注册 VOUT 账户",
     landingAccessConsole: "进入管理控制台 →",
     landingHeadlineA: "敏捷高效的",

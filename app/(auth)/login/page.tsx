@@ -50,16 +50,13 @@ export default async function LoginPage() {
           <div className="p-3.5 rounded-2xl bg-[#C6F827]/10 border border-[#C6F827]/30 flex items-center justify-between gap-3 shadow-lg">
             <div className="flex items-center gap-2.5">
               <span className="size-2 rounded-full bg-[#C6F827] animate-ping shrink-0" />
-              <div>
-                <p className="text-xs font-bold text-white">Sesión activa (Modo Demo)</p>
-                <p className="text-[11px] text-slate-400">Podés explorar el login o volver al sistema.</p>
-              </div>
+              <p className="text-xs font-bold text-white">Sesión activa en el sistema</p>
             </div>
             <Link
               href="/app"
               className="px-3.5 py-1.5 rounded-xl bg-[#C6F827] text-[#0A0E14] font-black text-xs hover:bg-[#b0df1f] transition shrink-0"
             >
-              Volver al Sistema →
+              Ir al Sistema →
             </Link>
           </div>
         )}
@@ -95,26 +92,12 @@ export default async function LoginPage() {
             </p>
           </div>
 
-          {/* Guest Access for Recruiters & Testing */}
-          <div className="p-4 rounded-2xl bg-[#121824] border border-[#1E293B] space-y-2.5">
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
-                Acceso de Evaluación
-              </span>
-              <span className="text-[9px] font-black bg-[#C6F827] text-[#0A0E14] px-2 py-0.5 rounded-full font-mono">
-                1-CLICK DEMO
-              </span>
-            </div>
-            <p className="text-xs text-[#94A3B8]">
-              Probá la terminal POS y los arqueos de caja en vivo sin necesidad de registro.
-            </p>
-            <Link
-              href="/demo"
-              className="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/15 hover:border-[#C6F827]/40 font-bold text-xs text-center block transition cursor-pointer"
-            >
-              🚀 Entrar como Invitado (Modo Demo) →
-            </Link>
-          </div>
+          <Link
+            href="/demo"
+            className="w-full py-3 px-4 rounded-2xl bg-[var(--primary-accent,#C6F827)] hover:bg-[#b0df1f] text-[#0A0E14] font-black text-xs text-center uppercase tracking-wider block transition shadow-sm cursor-pointer"
+          >
+            🚀 Live Demo →
+          </Link>
 
           <div className="relative flex items-center justify-center my-1">
             <div className="border-t border-[#1E293B] w-full" />
