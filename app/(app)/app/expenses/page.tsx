@@ -162,7 +162,7 @@ export default async function ExpensesPage({
               href={href(1, opt)}
               className={`px-3.5 py-1.5 rounded-full font-mono text-xs font-bold transition select-none cursor-pointer ${
                 limit === opt
-                  ? "bg-gradient-to-r from-[#C6F827] to-[#10B981] text-[#0A0E14] font-black shadow-xs"
+                  ? "bg-[#C6F827] text-[#0A0E14] font-black shadow-xs"
                   : "bg-white text-[#72729A] hover:text-[#18182E] hover:bg-[#F8F9FE] border border-[#EAE9F6] shadow-xs"
               }`}
             >
@@ -277,7 +277,7 @@ export default async function ExpensesPage({
                           href={href(item)}
                           className={`size-8 rounded-full flex items-center justify-center font-mono text-xs font-bold transition select-none cursor-pointer ${
                             item === page
-                              ? "bg-gradient-to-r from-[#C6F827] to-[#10B981] text-[#0A0E14] font-black shadow-xs"
+                              ? "bg-[#C6F827] text-[#0A0E14] font-black shadow-xs"
                               : "bg-white text-[#72729A] hover:bg-[#F8F9FE] hover:text-[#18182E] border border-[#EAE9F6]"
                           }`}
                         >

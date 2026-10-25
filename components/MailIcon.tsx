@@ -1,13 +1,14 @@
 export function PosIcon() {
   return (
-    <div className="w-14 h-14 rounded-2xl bg-[var(--primary-accent)] text-[var(--primary-accent-text)] flex items-center justify-center shadow-[var(--primary-accent-shadow)]">
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.8}
-          d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-        />
+    <div className="size-14 rounded-2xl bg-[#121824] border border-[#1E293B] flex items-center justify-center p-2.5 shadow-sm">
+      <svg viewBox="68 106 416 310" className="w-full h-full" fill="none">
+        <rect x="68" y="228" width="60" height="60" rx="6" fill="#E9E7E0" />
+        <rect x="132" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
+        <rect x="196" y="356" width="60" height="60" rx="6" fill="#E9E7E0" />
+        <rect x="260" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
+        <rect x="324" y="228" width="60" height="60" rx="6" fill="#C6F827" />
+        <rect x="390" y="166" width="46" height="46" rx="5" fill="#C6F827" />
+        <rect x="452" y="106" width="32" height="32" rx="4" fill="#C6F827" />
       </svg>
     </div>
   );

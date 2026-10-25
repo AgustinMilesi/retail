@@ -90,7 +90,7 @@ export default async function SalesPage({
               href={href(1, filter.value)}
               className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200 select-none border cursor-pointer ${
                 active
-                  ? "bg-gradient-to-r from-[#C6F827] to-[#10B981] text-[#0A0E14] font-black border-transparent shadow-sm -translate-y-0.5"
+                  ? "bg-[#C6F827] text-[#0A0E14] font-black border-transparent shadow-sm -translate-y-0.5"
                   : "bg-white text-[#72729A] hover:text-[#18182E] hover:bg-[#F8F9FE] border-[#EAE9F6] shadow-xs"
               }`}
             >

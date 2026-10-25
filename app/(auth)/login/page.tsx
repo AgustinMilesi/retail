@@ -15,16 +15,28 @@ export default async function LoginPage() {
       {/* Top Bar */}
       <header className="w-full max-w-5xl mx-auto flex items-center justify-between relative z-10">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="size-9 rounded-xl bg-[#0A0E14] border border-[#1E293B] flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform shrink-0">
-            <span className="font-black text-lg bg-gradient-to-br from-[#C6F827] via-[#10B981] to-[#00FF88] bg-clip-text text-transparent flex items-baseline leading-none select-none pl-0.5">
-              V<span className="text-[11px] font-black text-[#C6F827] ml-0.5">r</span>
-            </span>
+          <div className="size-9 rounded-xl bg-[#121824] border border-[#1E293B] flex items-center justify-center p-1.5 shadow-sm group-hover:scale-105 transition-transform shrink-0">
+            <svg viewBox="68 106 416 310" className="w-full h-full" fill="none">
+              <rect x="68" y="228" width="60" height="60" rx="6" fill="#E9E7E0" />
+              <rect x="132" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
+              <rect x="196" y="356" width="60" height="60" rx="6" fill="#E9E7E0" />
+              <rect x="260" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
+              <rect x="324" y="228" width="60" height="60" rx="6" fill="#C6F827" />
+              <rect x="390" y="166" width="46" height="46" rx="5" fill="#C6F827" />
+              <rect x="452" y="106" width="32" height="32" rx="4" fill="#C6F827" />
+            </svg>
           </div>
           <div className="flex flex-col">
-            <span className="font-black tracking-wider text-white text-base leading-tight">
-              VOUT <span className="text-[#C6F827] font-semibold">Retail</span>
-            </span>
-            <span className="text-[10px] uppercase tracking-widest text-[#94A3B8] font-bold">
+            <div className="flex items-baseline gap-1.5 leading-none">
+              <span className="font-black text-lg tracking-[-0.05em] text-white">
+                <span className="text-[#E9E7E0]">v</span>
+                <span className="text-[#C6F827]">out</span>
+              </span>
+              <span className="text-[10px] font-mono text-[#C6F827] px-1.5 py-0.5 rounded bg-[#121824] border border-[#1E293B]">
+                retail
+              </span>
+            </div>
+            <span className="text-[9px] uppercase tracking-widest text-[#94A3B8] font-bold mt-1">
               Autonomous Cloud Ecosystem
             </span>
           </div>
@@ -66,7 +78,7 @@ export default async function LoginPage() {
           </div>
 
           {/* Guest Access for Recruiters & Testing */}
-          <div className="p-4 rounded-2xl bg-gradient-to-br from-[#C6F827]/10 to-transparent border border-[#C6F827]/25 space-y-2.5">
+          <div className="p-4 rounded-2xl bg-[#121824] border border-[#1E293B] space-y-2.5">
             <div className="flex items-center justify-between">
               <span className="text-[11px] font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
                 Acceso de Evaluación

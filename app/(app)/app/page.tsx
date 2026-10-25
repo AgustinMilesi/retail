@@ -98,7 +98,7 @@ export default async function OverviewPage() {
           </div>
           <Link
             href={openSession ? "/app/pos" : "/app/cash"}
-            className="px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider text-[#0A0E14] bg-gradient-to-r from-[#C6F827] to-[#10B981] shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all flex items-center gap-1.5"
+            className="px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider text-[#0A0E14] bg-[#C6F827] shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all flex items-center gap-1.5"
           >
             {openSession ? t.openPosTill : t.openRegisterBtn}
           </Link>
