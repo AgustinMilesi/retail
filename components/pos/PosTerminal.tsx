@@ -340,7 +340,7 @@ export function PosTerminal({
     if (searchBox.current) searchBox.current.focus();
   }
 
-  // Direct 1-click checkout with active payment method
+  // Direct fast checkout with active payment method
   async function handleQuickCharge(method = activeTab.paymentMethod) {
     if (activeTab.lines.length === 0 || totals.totalCents <= 0) {
       toast.error("El pedido está vacío.");

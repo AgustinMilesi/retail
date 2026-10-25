@@ -13,7 +13,7 @@ VOUT Retail is an enterprise-grade retail store engine designed for physical sto
 
 ## Live Demo & Endpoints
 - Production Live URL: https://milesi-erp.vercel.app
-- 1-Click Guest Access: https://milesi-erp.vercel.app/demo
+- Live Demo Access: https://milesi-erp.vercel.app/demo
 - POS Terminal: https://milesi-erp.vercel.app/pos
 - Source Code: https://github.com/AgustinMilesi/retail
 
