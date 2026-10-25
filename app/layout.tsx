@@ -91,7 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-[#0A0E14] text-white selection:bg-[var(--primary-accent)] selection:text-[var(--primary-accent-text)]">
+      <body className="min-h-full flex flex-col bg-[var(--bg-page)] pos-dot-matrix text-white selection:bg-[var(--primary-accent)] selection:text-[var(--primary-accent-text)] transition-colors duration-200">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
