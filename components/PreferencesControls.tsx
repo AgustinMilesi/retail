@@ -5,7 +5,7 @@ import { usePreferences, THEMES } from "@/components/PreferencesProvider";
 import { LOCALES } from "@/lib/i18n";
 
 export function PreferencesControls() {
-  const { theme, setTheme, mode, setMode, locale, setLocale, t } = usePreferences();
+  const { theme, setTheme, mode, setMode, locale, setLocale, sound, setSound, t } = usePreferences();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -165,6 +165,44 @@ export function PreferencesControls() {
                     <span className="font-mono text-[10px] opacity-75">{l.code.toUpperCase()}</span>
                   </button>
                 ))}
+              </div>
+            </div>
+
+            {/* Tactile Sound FX Toggle */}
+            <div className="border-t border-[var(--border-card,#1E293B)] pt-3">
+              <div className="flex items-center justify-between mb-2">
+                <p className="text-[10px] uppercase tracking-wider text-[var(--text-muted,#94A3B8)] font-bold">
+                  {t.soundLabel || "Sonido Táctil"}
+                </p>
+                <span className="text-[10px] font-mono text-[var(--primary-accent,#c6f827)] font-bold">
+                  {sound ? (t.soundOn || "ON") : (t.soundOff || "OFF")}
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-1.5 p-1 rounded-2xl bg-[var(--bg-card-subtle,#0F1520)] border border-[var(--border-card,#1E293B)]">
+                <button
+                  type="button"
+                  onClick={() => setSound(true)}
+                  className={`flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    sound
+                      ? "bg-[var(--primary-accent)] text-[var(--primary-accent-text,#0A0E14)] shadow-xs"
+                      : "text-[var(--text-muted,#94A3B8)] hover:text-[var(--text-main,#FFFFFF)]"
+                  }`}
+                >
+                  <span>🔊</span>
+                  <span>{t.soundOn || "Activado"}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSound(false)}
+                  className={`flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    !sound
+                      ? "bg-[var(--primary-accent)] text-[var(--primary-accent-text,#0A0E14)] shadow-xs"
+                      : "text-[var(--text-muted,#94A3B8)] hover:text-[var(--text-main,#FFFFFF)]"
+                  }`}
+                >
+                  <span>🔇</span>
+                  <span>{t.soundOff || "Silenciado"}</span>
+                </button>
               </div>
             </div>
           </div>
