@@ -284,6 +284,28 @@ export const translations = {
     receiptDiscount: "Descuento:",
     receiptTotal: "TOTAL:",
     receiptThanks: "¡Gracias por su compra!",
+
+    // Landing Page
+    landingLogin: "Iniciar Sesión",
+    landingDemoGuest: "✨ Entrar como Invitado",
+    landingDemoSub: "1-Click Demo",
+    landingCreateAccount: "Crear Cuenta VOUT",
+    landingAccessConsole: "Acceder a Consola →",
+    landingHeadlineA: "Sistema ágil de",
+    landingHeadlineB: "Punto de Venta,",
+    landingHeadlineBold: "listo para operar.",
+    landingHeroDesc:
+      "Diseñado para retail, almacenes y comercios de alto volumen. Opera bajo infraestructura en la nube administrada con respaldos automáticos y 99.9% de uptime garantizado.",
+    pointPosLabel: "Punto de Venta (POS Cloud)",
+    pointPosDesc: "Cobro ultrarrápido con lector de códigos de barra, medios combinados y emisión de tickets.",
+    pointCashLabel: "Caja y Arqueos en Tiempo Real",
+    pointCashDesc: "Control estricto de turnos, arqueo de efectivo y trazabilidad auditada de diferencias.",
+    pointStockLabel: "Inventario Centralizado",
+    pointStockDesc: "Descuento automático por cada venta, alertas de stock crítico e importación masiva.",
+    landingFooterRights: "VOUT Retail · Managed Retail Cloud & Point of Sale.",
+    landingFooterTerms: "Términos & Condiciones",
+    landingFooterPrivacy: "Privacidad & Datos",
+    landingFooterCookies: "Cookies",
   },
 
   en: {
@@ -562,6 +584,28 @@ export const translations = {
     receiptDiscount: "Discount:",
     receiptTotal: "TOTAL:",
     receiptThanks: "Thank you for your purchase!",
+
+    // Landing Page
+    landingLogin: "Log In",
+    landingDemoGuest: "✨ Guest Demo",
+    landingDemoSub: "1-Click Demo",
+    landingCreateAccount: "Create VOUT Account",
+    landingAccessConsole: "Access Console →",
+    landingHeadlineA: "Agile Point of",
+    landingHeadlineB: "Sale System,",
+    landingHeadlineBold: "ready to operate.",
+    landingHeroDesc:
+      "Engineered for retail, grocery stores, and high-volume commercial counters. Runs on managed cloud infrastructure with automated backups and 99.9% SLA.",
+    pointPosLabel: "Point of Sale (Cloud POS)",
+    pointPosDesc: "Ultra-fast checkout with barcode scanner buffer, split payments, and fiscal receipt printing.",
+    pointCashLabel: "Real-Time Shift Cash Audits",
+    pointCashDesc: "Strict shift controls, blind cash register reconciliations, and auditable discrepancy logs.",
+    pointStockLabel: "Centralized Inventory",
+    pointStockDesc: "Automatic real-time deduction per sale, critical low-stock alerts, and batch CSV imports.",
+    landingFooterRights: "VOUT Retail · Managed Retail Cloud & Point of Sale.",
+    landingFooterTerms: "Terms & Conditions",
+    landingFooterPrivacy: "Privacy & Data",
+    landingFooterCookies: "Cookies",
   },
 
   pt: {
@@ -840,6 +884,28 @@ export const translations = {
     receiptDiscount: "Desconto:",
     receiptTotal: "TOTAL:",
     receiptThanks: "Obrigado pela preferência!",
+
+    // Landing Page
+    landingLogin: "Iniciar Sessão",
+    landingDemoGuest: "✨ Entrar como Convidado",
+    landingDemoSub: "1-Click Demo",
+    landingCreateAccount: "Criar Conta VOUT",
+    landingAccessConsole: "Acessar Console →",
+    landingHeadlineA: "Sistema ágil de",
+    landingHeadlineB: "Ponto de Venda,",
+    landingHeadlineBold: "pronto para operar.",
+    landingHeroDesc:
+      "Projetado para varejo, armazéns e comércio de alto fluxo. Opera em infraestrutura de nuvem gerenciada com backups automáticos e 99.9% de uptime garantido.",
+    pointPosLabel: "Ponto de Venda (POS Cloud)",
+    pointPosDesc: "Cobrança ultrarrápida com leitor de código de barras, pagamentos combinados e emissão de cupons.",
+    pointCashLabel: "Caixa e Fechamento em Tempo Real",
+    pointCashDesc: "Controle estrito de turnos, fechamento cego de caixa e rastreabilidade auditada de diferenças.",
+    pointStockLabel: "Inventário Centralizado",
+    pointStockDesc: "Baixa automática a cada venda, alertas de estoque crítico e importação em massa.",
+    landingFooterRights: "VOUT Retail · Managed Retail Cloud & Point of Sale.",
+    landingFooterTerms: "Termos & Condições",
+    landingFooterPrivacy: "Privacidade & Dados",
+    landingFooterCookies: "Cookies",
   },
 
   zh: {
@@ -1118,6 +1184,28 @@ export const translations = {
     receiptDiscount: "整单优惠:",
     receiptTotal: "实收总额:",
     receiptThanks: "谢谢惠顾，欢迎再次光临！",
+
+    // Landing Page
+    landingLogin: "登录",
+    landingDemoGuest: "✨ 访客体验",
+    landingDemoSub: "一键演示",
+    landingCreateAccount: "注册 VOUT 账户",
+    landingAccessConsole: "进入管理控制台 →",
+    landingHeadlineA: "敏捷高效的",
+    landingHeadlineB: "POS 收银系统，",
+    landingHeadlineBold: "即开即用。",
+    landingHeroDesc:
+      "专为零售超市、批发档口和高吞吐商户设计。托管式云基础设施运行，支持自动备份与 99.9% 在线率保证。",
+    pointPosLabel: "销售终端 (Cloud POS)",
+    pointPosDesc: "支持极速条码扫描枪缓冲输入、组合支付与热敏小票打印。",
+    pointCashLabel: "实时钱箱班次审计",
+    pointCashDesc: "严苛班次管理、盲盘平账交接班与可追溯资金差额日志。",
+    pointStockLabel: "集中化库存引擎",
+    pointStockDesc: "每笔销售即时扣减、临界低库存预警与批量 CSV 导入。",
+    landingFooterRights: "VOUT Retail · 托管式商业零售云与收银引擎。",
+    landingFooterTerms: "条款与协议",
+    landingFooterPrivacy: "隐私与数据",
+    landingFooterCookies: "Cookies",
   },
 } as const;
 
