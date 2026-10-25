@@ -1,7 +1,6 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import type { Locale, TranslationDict } from "@/lib/i18n";
 import { translations } from "@/lib/i18n";
 
@@ -30,8 +29,6 @@ type PreferencesContextType = {
 const PreferencesContext = createContext<PreferencesContextType | null>(null);
 
 export function PreferencesProvider({ children }: { children: React.ReactNode }) {
-  const router = useRouter();
-
   const [mode, setModeState] = useState<Mode>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("erp-mode") as Mode | null;
@@ -99,7 +96,6 @@ export function PreferencesProvider({ children }: { children: React.ReactNode })
     setLocaleState(newLocale);
     localStorage.setItem("erp-locale", newLocale);
     document.cookie = `erp-locale=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
-    router.refresh();
   };
 
   const t = translations[locale] || translations.es;
