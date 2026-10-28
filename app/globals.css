@@ -177,8 +177,8 @@ html, body {
 /* Accent Card */
 .clay-card-purple,
 .clay-card-accent {
-  background: var(--primary-accent) !important;
-  color: var(--primary-accent-text, #000000) !important;
+  background: var(--primary-accent);
+  color: var(--primary-accent-text, #000000);
   border-radius: 4px;
   border: 1px solid rgba(197, 255, 74, 0.4);
   box-shadow: 0 0 8px rgba(197, 255, 74, 0.35);
@@ -187,15 +187,15 @@ html, body {
 
 .clay-card-purple *,
 .clay-card-accent * {
-  color: inherit !important;
+  color: inherit;
 }
 
 /* zkPass Signal Lime Action Buttons - Sharp 4px, Instant Tactile */
 .clay-btn {
-  background: var(--primary-accent) !important;
-  color: var(--primary-accent-text, #000000) !important;
-  border-radius: 4px !important;
-  box-shadow: 0 0 8px rgba(197, 255, 74, 0.45) !important;
+  background: var(--primary-accent);
+  color: var(--primary-accent-text, #000000);
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(197, 255, 74, 0.45);
   font-family: var(--font-sans);
   font-weight: 500;
   letter-spacing: 0.04em;
@@ -203,7 +203,7 @@ html, body {
 }
 
 .clay-btn * {
-  color: inherit !important;
+  color: inherit;
 }
 
 .clay-btn:hover {
@@ -216,21 +216,21 @@ html, body {
 
 /* zkPass Navigation & Status Badges (4px Radius) */
 .clay-pill-active {
-  background: var(--primary-accent) !important;
-  color: #000000 !important;
-  border-radius: 4px !important;
-  box-shadow: 0 0 8px rgba(197, 255, 74, 0.35) !important;
+  background: var(--primary-accent);
+  color: #000000;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(197, 255, 74, 0.35);
 }
 
 .clay-pill-active * {
-  color: inherit !important;
+  color: inherit;
 }
 
 .clay-pill-inactive {
   background: var(--bg-card);
   color: var(--text-muted);
   border: 1px solid var(--border-card);
-  border-radius: 4px !important;
+  border-radius: 4px;
   transition: all 0.15s ease;
 }
 
@@ -265,13 +265,13 @@ html, body {
 .bg-\[\#6852f6\],
 .bg-\[\#5538EA\],
 .bg-\[\#5538ea\] {
-  background-color: var(--primary-accent) !important;
+  background-color: var(--primary-accent);
 }
 
 .hover\:bg-\[\#5E48E8\]:hover,
 .hover\:bg-\[\#4F38D8\]:hover,
 .hover\:bg-\[\#4a2fe0\]:hover {
-  background-color: var(--primary-accent-hover) !important;
+  background-color: var(--primary-accent-hover);
 }
 
 .text-\[\#5E48E8\],
@@ -280,44 +280,44 @@ html, body {
 .text-\[\#6852f6\],
 .text-\[\#5538EA\],
 .text-\[\#5538ea\] {
-  color: var(--primary-accent) !important;
+  color: var(--primary-accent);
 }
 
 .hover\:text-\[\#5E48E8\]:hover,
 .hover\:text-\[\#4F38D8\]:hover,
 .hover\:text-\[\#4a2fe0\]:hover {
-  color: var(--primary-accent-hover) !important;
+  color: var(--primary-accent-hover);
 }
 
 .border-\[\#5E48E8\],
 .border-\[\#5e48e8\],
 .focus\:border-\[\#5E48E8\]:focus {
-  border-color: var(--primary-accent) !important;
+  border-color: var(--primary-accent);
 }
 
 .ring-\[\#5E48E8\],
 .focus\:ring-\[\#5E48E8\]\/15:focus,
 .focus\:ring-\[\#5E48E8\]\/20:focus {
-  --tw-ring-color: rgba(var(--primary-accent-rgb), 0.2) !important;
+  --tw-ring-color: rgba(var(--primary-accent-rgb), 0.2);
 }
 
 /* Gradient overrides so any gradient button or pill updates dynamically with the theme */
 [class*="from-[#6852F6]"],
 [class*="from-[#6852f6]"] {
-  background: var(--primary-accent) !important;
-  color: var(--primary-accent-text, #0a0e14) !important;
+  background: var(--primary-accent);
+  color: var(--primary-accent-text, #0a0e14);
 }
 
 [class*="from-[#6852F6]"] *,
 [class*="from-[#6852f6]"] * {
-  color: inherit !important;
+  color: inherit;
 }
 
 [class*="shadow-[0_8px_20px_rgba(85,56,234"],
 [class*="shadow-[0_10px_24px_rgba(85,56,234"],
 [class*="shadow-[0_4px_12px_rgba(85,56,234"],
 [class*="shadow-[0_14px_28px_rgba(85,56,234"] {
-  box-shadow: 0 10px 24px -4px var(--primary-accent-shadow) !important;
+  box-shadow: 0 10px 24px -4px var(--primary-accent-shadow);
 }
 
 /* ==============================================================================
@@ -327,7 +327,7 @@ html, body {
 [data-mode="dark"] .bg-\[\#eef0fa\],
 .dark .bg-\[\#EEF0FA\],
 .dark .bg-\[\#eef0fa\] {
-  background-color: var(--bg-page) !important;
+  background-color: var(--bg-page);
 }
 
 [data-mode="dark"] .bg-white,
@@ -340,7 +340,7 @@ html, body {
 .dark .bg-white\/85,
 .dark .bg-white\/90,
 .dark .bg-white\/95 {
-  background-color: var(--bg-card) !important;
+  background-color: var(--bg-card);
 }
 
 [data-mode="dark"] .bg-\[\#F8F9FE\],
@@ -353,28 +353,28 @@ html, body {
 .dark .bg-\[\#F3F2FD\],
 .dark .bg-\[\#f3f2fd\],
 .dark .bg-\[\#f4f3fb\] {
-  background-color: var(--bg-card-subtle) !important;
+  background-color: var(--bg-card-subtle);
 }
 
 [data-mode="dark"] .hover\:bg-\[\#F3F2FD\]:hover,
 [data-mode="dark"] .hover\:bg-\[\#F8F9FE\]:hover,
 .dark .hover\:bg-\[\#F3F2FD\]:hover,
 .dark .hover\:bg-\[\#F8F9FE\]:hover {
-  background-color: var(--bg-hover) !important;
+  background-color: var(--bg-hover);
 }
 
 [data-mode="dark"] .text-\[\#18182E\],
 [data-mode="dark"] .text-\[\#18182e\],
 .dark .text-\[\#18182E\],
 .dark .text-\[\#18182e\] {
-  color: var(--text-main) !important;
+  color: var(--text-main);
 }
 
 [data-mode="dark"] .text-\[\#72729A\],
 [data-mode="dark"] .text-\[\#72729a\],
 .dark .text-\[\#72729A\],
 .dark .text-\[\#72729a\] {
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
 }
 
 [data-mode="dark"] .border-\[\#EAE9F6\],
@@ -385,7 +385,7 @@ html, body {
 .dark .border-\[\#eae9f6\],
 .dark .border-\[\#E2E1F4\],
 .dark .border-\[\#e2e1f4\] {
-  border-color: var(--border-card) !important;
+  border-color: var(--border-card);
 }
 
 /* Inputs, Textareas and Dropdowns */
@@ -395,22 +395,22 @@ html, body {
 .dark input,
 .dark textarea,
 .dark select {
-  background-color: var(--bg-card-subtle) !important;
-  border-color: var(--border-card) !important;
-  color: var(--text-main) !important;
+  background-color: var(--bg-card-subtle);
+  border-color: var(--border-card);
+  color: var(--text-main);
 }
 
 [data-mode="dark"] input::placeholder,
 [data-mode="dark"] textarea::placeholder,
 .dark input::placeholder,
 .dark textarea::placeholder {
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
 }
 
 [data-mode="dark"] select option,
 .dark select option {
-  background-color: var(--bg-card) !important;
-  color: var(--text-main) !important;
+  background-color: var(--bg-card);
+  color: var(--text-main);
 }
 
 /* Custom soft scrollbars */
@@ -449,8 +449,8 @@ input[type="number"] {
 
 /* High-contrast Visible Focus Indicator (SC 2.4.11 / 2.4.12) */
 :focus-visible {
-  outline: 2px solid var(--primary-accent) !important;
-  outline-offset: 2px !important;
+  outline: 2px solid var(--primary-accent);
+  outline-offset: 2px;
 }
 
 /* Reduced Motion Safety (SC 2.3.3) */
@@ -458,10 +458,10 @@ input[type="number"] {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
   }
 }
 
