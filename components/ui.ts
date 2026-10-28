@@ -1,18 +1,18 @@
-// The look of the product: VOUT Pocket Design System.
-// Deep obsidian canvas (#0A0E14), solid dark cards (#121824) with 1px slate borders (#1E293B),
-// dynamic reactive accents (Cyber-Lime #C6F827 flagship + palettes), pill-shaped interactive elements.
+// The look of the product: zkPass Enterprise Broadsheet System.
+// Carbon canvas (#060606), Onyx cards (#1f1f1f) with 1px Graphite borders (#252525),
+// Signal Lime (#c5ff4a) functional triggers and sharp 4px architectural radii.
 export const ui = {
-  label: "block text-[11px] font-bold uppercase tracking-[0.15em] text-[#94A3B8] mb-2",
+  label: "block text-[11px] font-sans font-medium uppercase tracking-[0.22em] text-[#7a7a7a] mb-1.5",
   input:
-    "w-full bg-[#0F1520] border border-[#1E293B] rounded-2xl px-4 py-2.5 text-sm font-medium text-white placeholder:text-[#64748B] outline-none transition-all duration-200 focus:bg-[#121824] focus:border-[var(--primary-accent)] focus:ring-1 focus:ring-[var(--primary-accent)] shadow-inner",
-  error: "text-rose-500 text-xs mt-1.5 font-medium",
+    "w-full bg-[#000000] border border-[#252525] rounded-[4px] px-3.5 py-2 text-sm font-mono text-[#ffffff] placeholder:text-[#7a7a7a] outline-none transition-colors duration-150 focus:bg-[#161616] focus:border-[#c5ff4a] focus:ring-1 focus:ring-[#c5ff4a]",
+  error: "text-rose-400 text-xs mt-1 font-mono",
   button:
-    "px-6 py-2.5 bg-[var(--primary-accent)] hover:bg-[var(--primary-accent-hover)] disabled:opacity-50 text-[var(--primary-accent-text,#0A0E14)] font-black rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all duration-200 text-xs uppercase tracking-wider flex items-center justify-center gap-2 select-none cursor-pointer",
+    "px-5 py-2.5 bg-[#c5ff4a] hover:opacity-95 text-[#000000] font-sans font-medium text-xs uppercase tracking-[0.04em] rounded-[4px] shadow-[0_0_8px_rgba(197,255,74,0.45)] active:scale-95 transition-all flex items-center justify-center gap-2 select-none cursor-pointer",
   ghost:
-    "px-4 py-2 bg-white/5 hover:bg-white/10 text-white border border-[#1E293B] hover:border-[var(--primary-accent)]/50 disabled:opacity-50 rounded-2xl transition-all duration-200 text-xs font-bold uppercase tracking-wider shadow-xs hover:shadow-md hover:-translate-y-0.5 active:scale-95 select-none cursor-pointer",
+    "px-4 py-2 bg-transparent hover:bg-[#252525] text-[#ffffff] hover:text-[#c5ff4a] border border-[#252525] hover:border-[#313131] rounded-[4px] text-xs font-sans font-medium uppercase tracking-[0.08em] transition-colors select-none cursor-pointer",
   danger:
-    "px-4 py-2 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 hover:border-rose-500/50 disabled:opacity-50 rounded-2xl transition-all duration-200 text-xs font-bold uppercase tracking-wider shadow-xs hover:shadow-md hover:-translate-y-0.5 active:scale-95 select-none cursor-pointer",
-  card: "bg-[#121824] rounded-3xl p-6 shadow-[0_16px_36px_-8px_rgba(0,0,0,0.5)] border border-[#1E293B] transition-all duration-300 hover:shadow-[0_20px_42px_-8px_rgba(0,0,0,0.7)] hover:border-[var(--primary-accent)]/40",
-  link: "text-[var(--primary-accent)] hover:underline font-semibold transition-colors",
-  muted: "text-[#94A3B8] text-sm",
+    "px-4 py-2 bg-rose-950/30 hover:bg-rose-900/40 text-rose-400 border border-rose-900/50 hover:border-rose-500 rounded-[4px] text-xs font-sans font-medium uppercase tracking-[0.08em] transition-colors select-none cursor-pointer",
+  card: "bg-[#1f1f1f] rounded-[4px] p-6 border border-[#252525] transition-colors hover:border-[#313131]",
+  link: "text-[#c5ff4a] hover:underline font-mono text-xs transition-colors",
+  muted: "text-[#7a7a7a] text-xs font-sans",
 } as const;

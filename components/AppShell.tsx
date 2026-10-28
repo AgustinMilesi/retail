@@ -132,7 +132,7 @@ export function AppShell({
           <Link
             href="/app/settings"
             onClick={() => setMobileOpen(false)}
-            className="p-2 border border-white/10 hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] text-slate-300 rounded-full transition-colors flex items-center justify-center shrink-0"
+            className="p-2 border border-white/10 hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] text-slate-300 rounded-[4px] transition-colors flex items-center justify-center shrink-0"
             title={settingsLabel}
             aria-label={settingsLabel}
           >
@@ -151,7 +151,7 @@ export function AppShell({
         <Link
           href="/login"
           onClick={() => setMobileOpen(false)}
-          className="w-full text-center text-[11px] font-semibold text-slate-400 hover:text-[var(--primary-accent)] py-1.5 px-2 rounded-xl border border-white/5 hover:border-[var(--primary-accent)]/30 transition block"
+          className="w-full text-center text-[11px] font-semibold text-slate-400 hover:text-[var(--primary-accent)] py-1.5 px-2 rounded-[4px] border border-white/5 hover:border-[var(--primary-accent)]/30 transition block"
           title="Ver pantalla de login"
         >
           🔑 Ver Pantalla de Login
@@ -175,7 +175,7 @@ export function AppShell({
                 toggleDesktopSidebar();
               }
             }}
-            className="p-2.5 rounded-2xl text-[var(--primary-accent)] hover:bg-[var(--bg-hover,#1e293b)] transition-all duration-200 border border-[var(--border-card,#1E293B)] shadow-xs flex items-center justify-center active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-accent)]"
+            className="p-2.5 rounded-[4px] text-[var(--primary-accent)] hover:bg-[var(--bg-hover,#252525)] transition-all duration-150 border border-[var(--border-card,#252525)] shadow-none flex items-center justify-center active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-accent)]"
             title="Alternar menú / Más espacio"
             aria-label="Abrir o cerrar menú"
             aria-expanded={mobileOpen}
@@ -191,7 +191,7 @@ export function AppShell({
           </button>
 
           <div className="flex items-center gap-2.5">
-            <span className="size-9 rounded-2xl bg-[#0A0E14] border border-[#1E293B] flex items-center justify-center shrink-0 p-1.5 shadow-sm">
+            <span className="size-9 rounded-[4px] bg-[#000000] border border-[#252525] flex items-center justify-center shrink-0 p-1.5 shadow-none">
               <svg viewBox="68 106 416 310" className="w-full h-full" fill="none">
                 <rect x="68" y="228" width="60" height="60" rx="6" fill="#E9E7E0" />
                 <rect x="132" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
@@ -212,7 +212,7 @@ export function AppShell({
           <PreferencesControls />
           <Link
             href="/app/settings"
-            className="p-2.5 border border-[var(--border-card,#1E293B)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] text-[var(--text-muted,#94A3B8)] bg-[var(--bg-card,#121824)] rounded-2xl transition-all duration-200 flex items-center justify-center shrink-0 shadow-xs hover:shadow-md hover:-translate-y-0.5 active:scale-95"
+            className="p-2.5 border border-[var(--border-card,#252525)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] text-[var(--text-muted,#7a7a7a)] bg-[var(--bg-card,#1f1f1f)] rounded-[4px] transition-colors duration-150 flex items-center justify-center shrink-0 active:scale-95"
             title={settingsLabel}
             aria-label={settingsLabel}
           >

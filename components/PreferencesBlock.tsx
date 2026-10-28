@@ -7,15 +7,15 @@ export function PreferencesBlock({ compact = false }: { compact?: boolean }) {
   const { theme, setTheme, mode, setMode, locale, setLocale, t } = usePreferences();
 
   return (
-    <div className={`clay-card ${compact ? "p-5" : "p-6 sm:p-8"} rounded-3xl space-y-6 bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)]`}>
-      <div className="border-b border-[var(--border-card,#1E293B)] pb-4">
-        <p className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted,#94A3B8)]">
+    <div className={`clay-card ${compact ? "p-5" : "p-6 sm:p-8"} rounded-[4px] space-y-6 bg-[var(--bg-card)] border border-[var(--border-card)]`}>
+      <div className="border-b border-[var(--border-card)] pb-4">
+        <p className="text-xs font-sans font-medium uppercase tracking-[0.22em] text-[var(--text-muted)]">
           {t.mode || "Aspecto"} &amp; {t.theme || "Personalización"}
         </p>
-        <h2 className="text-xl font-black text-[var(--text-main,#FFFFFF)]">
+        <h2 className="text-xl font-serif text-[var(--text-main,#FFFFFF)]">
           {locale === "es" ? "Preferencias Visuales" : "Interface Preferences"}
         </h2>
-        <p className="text-xs text-[var(--text-muted,#94A3B8)] mt-1">
+        <p className="text-xs text-[var(--text-muted)] mt-1 font-sans">
           {locale === "es"
             ? "Personalizá el modo de pantalla, el color de acento y el idioma de la aplicación."
             : "Customize your appearance mode, primary accent color, and language."}
@@ -25,17 +25,17 @@ export function PreferencesBlock({ compact = false }: { compact?: boolean }) {
       <div className="grid sm:grid-cols-3 gap-6">
         {/* 1. Mode: Light vs Dark */}
         <div className="space-y-2">
-          <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-[var(--text-muted,#94A3B8)]">
+          <label className="block text-[11px] font-sans font-medium uppercase tracking-[0.22em] text-[var(--text-muted)]">
             {t.mode || "Modo"}
           </label>
-          <div className="grid grid-cols-2 gap-2 p-1 rounded-2xl bg-[var(--bg-card-subtle,#0F1520)] border border-[var(--border-card,#1E293B)]">
+          <div className="grid grid-cols-2 gap-2 p-1 rounded-[4px] bg-[var(--bg-card-subtle)] border border-[var(--border-card)]">
             <button
               type="button"
               onClick={() => setMode("light")}
-              className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`flex items-center justify-center gap-2 py-2 px-3 rounded-[2px] text-xs font-sans font-medium uppercase tracking-[0.04em] transition-all cursor-pointer ${
                 mode === "light"
-                  ? "bg-[var(--primary-accent)] text-[var(--primary-accent-text,#0A0E14)] shadow-xs"
-                  : "text-[var(--text-muted,#94A3B8)] hover:text-[var(--text-main,#FFFFFF)]"
+                  ? "bg-[var(--primary-accent)] text-[#000000] shadow-[0_0_8px_rgba(197,255,74,0.35)]"
+                  : "text-[var(--text-muted)] hover:text-[var(--text-main,#FFFFFF)]"
               }`}
             >
               <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -52,10 +52,10 @@ export function PreferencesBlock({ compact = false }: { compact?: boolean }) {
             <button
               type="button"
               onClick={() => setMode("dark")}
-              className={`flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`flex items-center justify-center gap-2 py-2 px-3 rounded-[2px] text-xs font-sans font-medium uppercase tracking-[0.04em] transition-all cursor-pointer ${
                 mode === "dark"
-                  ? "bg-[var(--primary-accent)] text-[var(--primary-accent-text,#0A0E14)] shadow-xs"
-                  : "text-[var(--text-muted,#94A3B8)] hover:text-[var(--text-main,#FFFFFF)]"
+                  ? "bg-[var(--primary-accent)] text-[#000000] shadow-[0_0_8px_rgba(197,255,74,0.35)]"
+                  : "text-[var(--text-muted)] hover:text-[var(--text-main,#FFFFFF)]"
               }`}
             >
               <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,19 +73,19 @@ export function PreferencesBlock({ compact = false }: { compact?: boolean }) {
 
         {/* 2. Color Accent Palettes */}
         <div className="space-y-2">
-          <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-[var(--text-muted,#94A3B8)]">
+          <label className="block text-[11px] font-sans font-medium uppercase tracking-[0.22em] text-[var(--text-muted)]">
             {t.theme || "Color de Acento"}
           </label>
-          <div className="flex items-center justify-between gap-2 p-2 rounded-2xl bg-[var(--bg-card-subtle,#0F1520)] border border-[var(--border-card,#1E293B)] h-[46px]">
+          <div className="flex items-center justify-between gap-2 p-2 rounded-[4px] bg-[var(--bg-card-subtle)] border border-[var(--border-card)] h-[46px]">
             {THEMES.map((item) => (
               <button
                 key={item.id}
                 type="button"
                 onClick={() => setTheme(item.id)}
-                className={`size-7 rounded-full transition-all cursor-pointer ${item.colorClass} ${
+                className={`size-6 rounded-[2px] transition-all cursor-pointer ${item.colorClass} ${
                   theme === item.id
-                    ? "scale-115 ring-2 ring-offset-2 ring-[var(--primary-accent)] ring-offset-[var(--bg-card,#121824)] shadow-md"
-                    : "opacity-60 hover:opacity-100 hover:scale-105"
+                    ? "scale-110 ring-2 ring-[var(--primary-accent)]"
+                    : "opacity-60 hover:opacity-100"
                 }`}
                 title={item.name}
               />
@@ -95,19 +95,19 @@ export function PreferencesBlock({ compact = false }: { compact?: boolean }) {
 
         {/* 3. Language Selection */}
         <div className="space-y-2">
-          <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-[var(--text-muted,#94A3B8)]">
+          <label className="block text-[11px] font-sans font-medium uppercase tracking-[0.22em] text-[var(--text-muted)]">
             {t.language || "Idioma"}
           </label>
-          <div className="grid grid-cols-2 gap-1.5 p-1 rounded-2xl bg-[var(--bg-card-subtle,#0F1520)] border border-[var(--border-card,#1E293B)]">
+          <div className="grid grid-cols-2 gap-1.5 p-1 rounded-[4px] bg-[var(--bg-card-subtle)] border border-[var(--border-card)]">
             {LOCALES.map((l) => (
               <button
                 key={l.code}
                 type="button"
                 onClick={() => setLocale(l.code)}
-                className={`flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
+                className={`flex items-center justify-between px-2.5 py-1.5 rounded-[2px] text-xs font-sans transition-all cursor-pointer ${
                   locale === l.code
-                    ? "bg-[var(--primary-accent)] text-[var(--primary-accent-text,#0A0E14)] font-bold shadow-xs"
-                    : "text-[var(--text-muted,#94A3B8)] hover:text-[var(--text-main,#FFFFFF)] hover:bg-[var(--bg-hover,#1E293B)]"
+                    ? "bg-[var(--primary-accent)] text-[#000000] font-medium shadow-[0_0_8px_rgba(197,255,74,0.35)]"
+                    : "text-[var(--text-muted)] hover:text-[var(--text-main,#FFFFFF)] hover:bg-[var(--bg-hover)]"
                 }`}
               >
                 <span>{l.label}</span>

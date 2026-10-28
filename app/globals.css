@@ -1,39 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500;600&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import "tailwindcss";
 
 :root {
-  /* Default Theme: VOUT Cyber-Lime */
-  --primary-accent: #c6f827;
-  --primary-accent-hover: #b4e518;
-  --primary-accent-gradient: linear-gradient(135deg, #c6f827 0%, #a3d915 100%);
-  --primary-accent-shadow: rgba(0, 0, 0, 0.3);
-  --primary-accent-rgb: 198, 248, 39;
-  --primary-accent-text: #0a0e14;
+  /* zkPass Encrypted Broadsheet System: Signal Lime & Deep Carbon */
+  --primary-accent: #c5ff4a;
+  --primary-accent-hover: #b4f035;
+  --primary-accent-gradient: linear-gradient(135deg, #c5ff4a 0%, #a2df25 100%);
+  --primary-accent-shadow: rgba(197, 255, 74, 0.35);
+  --primary-accent-rgb: 197, 255, 74;
+  --primary-accent-text: #000000;
 
-  /* Default Canvas: Deep Obsidian Charcoal */
-  --bg-page: #0a0e14;
-  --bg-card: #121824;
-  --bg-card-subtle: #182030;
-  --bg-hover: #1e293b;
+  /* Carbon Canvas & Onyx Surfaces */
+  --bg-page: #060606;
+  --bg-card: #1f1f1f;
+  --bg-card-subtle: #161616;
+  --bg-sidebar: #121212;
+  --bg-hover: #252525;
   --text-main: #ffffff;
-  --text-muted: #94a3b8;
-  --border-card: #1e293b;
-  --border-subtle: #141c2c;
+  --text-muted: #7a7a7a;
+  --border-card: #252525;
+  --border-subtle: #1c1c1c;
+
+  /* Typography */
+  --font-sans: 'Inter Tight', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-serif: 'PT Serif', Georgia, serif;
 }
 
 /* ==============================================================================
-   Dark Mode Canvas
+   Dark Mode Canvas (zkPass Broadsheet)
    ============================================================================== */
 [data-mode="dark"],
 .dark {
   color-scheme: dark;
-  --bg-page: #0a0e14;
-  --bg-card: #121824;
-  --bg-card-subtle: #182030;
-  --bg-hover: #1e293b;
+  --bg-page: #060606;
+  --bg-card: #1f1f1f;
+  --bg-card-subtle: #161616;
+  --bg-sidebar: #121212;
+  --bg-hover: #252525;
   --text-main: #ffffff;
-  --text-muted: #94a3b8;
-  --border-card: #1e293b;
-  --border-subtle: #141c2c;
+  --text-muted: #7a7a7a;
+  --border-card: #252525;
+  --border-subtle: #1c1c1c;
 }
 
 /* ==============================================================================
@@ -42,51 +50,52 @@
 [data-mode="light"],
 html:not(.dark) {
   color-scheme: light;
-  --bg-page: #f8fafc;
+  --bg-page: #f6f6f6;
   --bg-card: #ffffff;
-  --bg-card-subtle: #f1f5f9;
-  --bg-hover: #e2e8f0;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border-card: #e2e8f0;
-  --border-subtle: #cbd5e1;
+  --bg-card-subtle: #f0f0f0;
+  --bg-sidebar: #fafafa;
+  --bg-hover: #eaeaea;
+  --text-main: #0a0a0a;
+  --text-muted: #666666;
+  --border-card: #e0e0e0;
+  --border-subtle: #ebebeb;
 }
 
 /* ==============================================================================
    Color Themes (Palettes)
    ============================================================================== */
 [data-theme="lime"] {
-  --primary-accent: #c6f827;
-  --primary-accent-hover: #b4e518;
-  --primary-accent-gradient: linear-gradient(135deg, #c6f827 0%, #10b981 100%);
-  --primary-accent-shadow: rgba(0, 0, 0, 0.3);
-  --primary-accent-rgb: 198, 248, 39;
-  --primary-accent-text: #0a0e14;
+  --primary-accent: #c5ff4a;
+  --primary-accent-hover: #b4f035;
+  --primary-accent-gradient: linear-gradient(135deg, #c5ff4a 0%, #a2df25 100%);
+  --primary-accent-shadow: rgba(197, 255, 74, 0.35);
+  --primary-accent-rgb: 197, 255, 74;
+  --primary-accent-text: #000000;
 }
 
 [data-theme="mint"] {
   --primary-accent: #00ff88;
   --primary-accent-hover: #00e57a;
   --primary-accent-gradient: linear-gradient(135deg, #00ff88 0%, #10b981 100%);
-  --primary-accent-shadow: rgba(0, 0, 0, 0.3);
+  --primary-accent-shadow: rgba(0, 255, 136, 0.3);
   --primary-accent-rgb: 0, 255, 136;
-  --primary-accent-text: #0a0e14;
+  --primary-accent-text: #000000;
 }
 
 [data-theme="emerald"] {
   --primary-accent: #10b981;
   --primary-accent-hover: #059669;
   --primary-accent-gradient: linear-gradient(135deg, #34d399 0%, #059669 100%);
-  --primary-accent-shadow: rgba(0, 0, 0, 0.3);
+  --primary-accent-shadow: rgba(16, 185, 129, 0.3);
   --primary-accent-rgb: 16, 185, 129;
-  --primary-accent-text: #0a0e14;
+  --primary-accent-text: #000000;
 }
 
 [data-theme="jade"] {
   --primary-accent: #059669;
   --primary-accent-hover: #047857;
   --primary-accent-gradient: linear-gradient(135deg, #10b981 0%, #047857 100%);
-  --primary-accent-shadow: rgba(0, 0, 0, 0.3);
+  --primary-accent-shadow: rgba(5, 150, 105, 0.3);
   --primary-accent-rgb: 5, 150, 105;
   --primary-accent-text: #ffffff;
 }
@@ -134,10 +143,10 @@ html, body {
   background-position: 0 0, 6px 6px;
   background-attachment: fixed;
   color: var(--text-main);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   min-height: 100vh;
   letter-spacing: -0.01em;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .pos-dot-matrix {
@@ -149,29 +158,28 @@ html, body {
   background-attachment: fixed;
 }
 
-/* Solid Obsidian Surfaces (VOUT Pocket Style) */
+/* zkPass Architectural Surfaces */
 .clay-card {
   background-color: var(--bg-card);
-  border-radius: 1.5rem;
+  border-radius: 4px;
   border: 1px solid var(--border-card);
-  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.45);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: none;
+  transition: border-color 0.15s ease;
 }
 
 .clay-card:hover {
-  border-color: rgba(var(--primary-accent-rgb), 0.35);
-  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.6);
-  transform: translateY(-1px);
+  border-color: #313131;
 }
 
 /* Accent Card */
 .clay-card-purple,
 .clay-card-accent {
   background: var(--primary-accent) !important;
-  color: var(--primary-accent-text, #0a0e14) !important;
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.4);
-  transition: all 0.25s ease;
+  color: var(--primary-accent-text, #000000) !important;
+  border-radius: 4px;
+  border: 1px solid rgba(197, 255, 74, 0.4);
+  box-shadow: 0 0 8px rgba(197, 255, 74, 0.35);
+  transition: all 0.15s ease;
 }
 
 .clay-card-purple *,
@@ -179,12 +187,16 @@ html, body {
   color: inherit !important;
 }
 
-/* VOUT Action Buttons - Clean Matte, Zero Neon Glow */
+/* zkPass Signal Lime Action Buttons - Sharp 4px, Instant Tactile */
 .clay-btn {
   background: var(--primary-accent) !important;
-  color: var(--primary-accent-text, #0a0e14) !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--primary-accent-text, #000000) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 0 8px rgba(197, 255, 74, 0.45) !important;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: all 0.15s ease;
 }
 
 .clay-btn * {
@@ -192,19 +204,19 @@ html, body {
 }
 
 .clay-btn:hover {
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35) !important;
-  transform: translateY(-1px);
+  opacity: 0.95;
 }
 
 .clay-btn:active {
   transform: scale(0.98);
 }
 
-/* VOUT Pills (Active and Inactive) */
+/* zkPass Navigation & Status Badges (4px Radius) */
 .clay-pill-active {
   background: var(--primary-accent) !important;
-  color: var(--primary-accent-text, #0a0e14) !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
+  color: #000000 !important;
+  border-radius: 4px !important;
+  box-shadow: 0 0 8px rgba(197, 255, 74, 0.35) !important;
 }
 
 .clay-pill-active * {
@@ -215,15 +227,14 @@ html, body {
   background: var(--bg-card);
   color: var(--text-muted);
   border: 1px solid var(--border-card);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 4px !important;
+  transition: all 0.15s ease;
 }
 
 .clay-pill-inactive:hover {
   background: var(--bg-hover);
   color: var(--primary-accent);
-  border-color: rgba(var(--primary-accent-rgb), 0.3);
-  transform: translateY(-1px);
+  border-color: #313131;
 }
 
 /* Smooth micro-animations */

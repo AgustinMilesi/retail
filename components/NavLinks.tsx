@@ -123,10 +123,10 @@ export function NavLinks({ items, onItemClick }: { items: Item[]; onItemClick?: 
             href={item.href}
             prefetch={false}
             onClick={onItemClick}
-            className={`flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-200 select-none ${
+            className={`flex items-center justify-between gap-3 px-3.5 py-2 rounded-[4px] text-xs font-sans uppercase tracking-[0.16em] transition-colors duration-150 select-none ${
               active
-                ? "bg-[var(--primary-accent)] text-[var(--primary-accent-text,#0a0e14)] shadow-[0_8px_20px_var(--primary-accent-shadow)] font-black -translate-y-0.5"
-                : "text-[var(--text-muted,#94a3b8)] hover:text-[var(--text-main,#ffffff)] hover:bg-[var(--bg-hover,#1e293b)] border border-transparent hover:border-[var(--border-card,#1e293b)]"
+                ? "bg-[var(--primary-accent)] text-[#000000] shadow-[0_0_8px_rgba(197,255,74,0.35)] font-semibold"
+                : "text-[var(--text-muted,#7a7a7a)] hover:text-[var(--primary-accent)] hover:bg-[var(--bg-hover,#252525)] border border-transparent hover:border-[#313131]"
             }`}
           >
             <span className="flex items-center gap-2.5 truncate">
@@ -134,7 +134,7 @@ export function NavLinks({ items, onItemClick }: { items: Item[]; onItemClick?: 
               <span className="truncate">{translatedLabel}</span>
             </span>
             {item.badge ? (
-              <span className="min-w-5 h-5 px-1.5 rounded-full bg-rose-500 text-white text-[10px] font-bold flex items-center justify-center shrink-0">
+              <span className="min-w-4 h-4 px-1 rounded-[2px] bg-rose-500 text-white text-[10px] font-mono font-medium flex items-center justify-center shrink-0">
                 {item.badge}
               </span>
             ) : null}

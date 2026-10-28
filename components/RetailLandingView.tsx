@@ -29,37 +29,37 @@ export function RetailLandingView() {
   return (
     <main className="min-h-screen flex flex-col justify-between p-4 sm:p-8 lg:p-12 relative overflow-hidden animate-smooth-in bg-[var(--bg-page,#0A0E14)] text-slate-100">
       {/* Top Header */}
-      <header className="w-full max-w-6xl mx-auto flex items-center justify-between pb-6 border-b border-[#1E293B]">
+      <header className="w-full max-w-6xl mx-auto flex items-center justify-between pb-6 border-b border-[#252525]">
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="size-10 rounded-2xl bg-[#121824] border border-[#1E293B] flex items-center justify-center p-2 shadow-sm transition-transform group-hover:scale-105 shrink-0">
+          <div className="size-10 rounded-[4px] bg-[#1f1f1f] border border-[#252525] flex items-center justify-center p-2 shadow-none transition-transform group-hover:scale-105 shrink-0">
             <svg viewBox="68 106 416 310" className="w-full h-full" fill="none">
-              <rect x="68" y="228" width="60" height="60" rx="6" fill="#E9E7E0" />
-              <rect x="132" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
-              <rect x="196" y="356" width="60" height="60" rx="6" fill="#E9E7E0" />
-              <rect x="260" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
-              <rect x="324" y="228" width="60" height="60" rx="6" fill="#C6F827" />
-              <rect x="390" y="166" width="46" height="46" rx="5" fill="#C6F827" />
-              <rect x="452" y="106" width="32" height="32" rx="4" fill="#C6F827" />
+              <rect x="68" y="228" width="60" height="60" rx="2" fill="#E5E5E5" />
+              <rect x="132" y="292" width="60" height="60" rx="2" fill="#E5E5E5" />
+              <rect x="196" y="356" width="60" height="60" rx="2" fill="#E5E5E5" />
+              <rect x="260" y="292" width="60" height="60" rx="2" fill="#E5E5E5" />
+              <rect x="324" y="228" width="60" height="60" rx="2" fill="#c5ff4a" />
+              <rect x="390" y="166" width="46" height="46" rx="2" fill="#c5ff4a" />
+              <rect x="452" y="106" width="32" height="32" rx="2" fill="#c5ff4a" />
             </svg>
           </div>
           <div>
             <div className="flex items-baseline gap-1.5 leading-none">
-              <span className="font-black text-xl tracking-[-0.05em] text-white">
-                <span className="text-[#E9E7E0]">v</span>
-                <span className="text-[#C6F827]">out</span>
+              <span className="font-sans font-black text-xl tracking-[-0.03em] text-white">
+                <span className="text-[#e5e5e5]">v</span>
+                <span className="text-[#c5ff4a]">out</span>
               </span>
-              <span className="text-xs font-mono text-[#C6F827] px-1.5 py-0.5 rounded bg-[#121824] border border-[#1E293B]">
+              <span className="text-[11px] font-mono uppercase tracking-[0.1em] text-[#c5ff4a] px-1.5 py-0.5 rounded-[2px] bg-[#000000] border border-[#252525]">
                 retail
               </span>
             </div>
-            <span className="text-xs text-slate-400 font-medium">Cloud POS &amp; Store Inventory Engine</span>
+            <span className="text-xs text-[#7a7a7a] font-sans font-medium">Cloud POS &amp; Store Inventory Engine</span>
           </div>
         </Link>
         <div className="flex items-center gap-3">
           <PreferencesControls />
           <Link
             href="/login"
-            className="hidden sm:inline-flex px-4 py-2 text-xs font-bold uppercase tracking-wider text-[var(--primary-accent)] hover:bg-[var(--primary-accent)]/10 rounded-xl border border-[#1E293B] transition"
+            className="hidden sm:inline-flex px-4 py-2 text-xs font-sans font-medium uppercase tracking-[0.08em] text-[#c5ff4a] hover:bg-[#252525] rounded-[4px] border border-[#252525] transition-colors"
           >
             {t.landingLogin}
           </Link>
@@ -81,9 +81,9 @@ export function RetailLandingView() {
               <Link
                 href="/demo"
                 prefetch={false}
-                className="px-6 py-3.5 rounded-2xl bg-[var(--primary-accent)] text-[var(--primary-accent-text)] font-black text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5 transition flex items-center gap-2 group hover:opacity-95"
+                className="px-5 py-2.5 rounded-[4px] bg-[var(--primary-accent)] text-[#000000] font-sans font-medium text-xs uppercase tracking-[0.04em] shadow-[0_0_8px_rgba(197,255,74,0.45)] hover:opacity-95 active:scale-95 transition-all flex items-center gap-2 group"
               >
-                <span>🚀 Live Demo →</span>
+                <span>⚡ Live Demo →</span>
               </Link>
               <Link href="/register" className={ui.button}>
                 {t.landingCreateAccount}
@@ -98,9 +98,9 @@ export function RetailLandingView() {
             <PosIcon />
             <div className="space-y-4">
               {points.map((point) => (
-                <div key={point.label} className="p-4 rounded-2xl bg-[#121824] border border-[#1E293B] shadow-sm">
+                <div key={point.label} className="p-4 rounded-[4px] bg-[#1f1f1f] border border-[#252525] shadow-none">
                   <p className={ui.label}>{point.label}</p>
-                  <p className="text-slate-200 text-sm font-medium mt-1">{point.text}</p>
+                  <p className="text-[#e5e5e5] text-sm font-sans font-normal mt-1">{point.text}</p>
                 </div>
               ))}
             </div>
@@ -114,7 +114,7 @@ export function RetailLandingView() {
       </div>
 
       {/* Footer */}
-      <footer className="w-full max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400 pt-6 border-t border-[#1E293B]">
+      <footer className="w-full max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs text-[#7a7a7a] pt-6 border-t border-[#252525]">
         <p>© {new Date().getFullYear()} {t.landingFooterRights}</p>
         <div className="flex items-center gap-5">
           <Link href="/legal" className="hover:text-[var(--primary-accent)] transition">
