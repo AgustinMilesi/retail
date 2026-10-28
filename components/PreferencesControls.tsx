@@ -125,9 +125,10 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
                   <button
                     type="button"
                     onClick={() => setMode("light")}
+                    style={mode === "light" ? { backgroundColor: "var(--primary-accent)", color: "var(--primary-accent-text, #000000)" } : undefined}
                     className={`flex items-center justify-center gap-2 py-2.5 px-3 min-h-[40px] rounded-[4px] text-xs font-semibold transition-all cursor-pointer ${
                       mode === "light"
-                        ? "bg-[#c5ff4a] text-black shadow-xs font-bold"
+                        ? "font-bold shadow-xs"
                         : "text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]"
                     }`}
                   >
@@ -145,9 +146,10 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
                   <button
                     type="button"
                     onClick={() => setMode("dark")}
+                    style={mode === "dark" ? { backgroundColor: "var(--primary-accent)", color: "var(--primary-accent-text, #000000)" } : undefined}
                     className={`flex items-center justify-center gap-2 py-2.5 px-3 min-h-[40px] rounded-[4px] text-xs font-semibold transition-all cursor-pointer ${
                       mode === "dark"
-                        ? "bg-[#c5ff4a] text-black shadow-xs font-bold"
+                        ? "font-bold shadow-xs"
                         : "text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]"
                     }`}
                   >
@@ -170,21 +172,25 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
                   {t.theme || "Color de Acento"}
                 </label>
                 <div className="grid grid-cols-4 gap-2">
-                  {THEMES.map((item) => (
-                    <button
-                      key={item.id}
-                      type="button"
-                      onClick={() => setTheme(item.id)}
-                      className={`flex items-center justify-center gap-1.5 py-2 px-2 min-h-[40px] rounded-[6px] border text-xs font-medium transition-all cursor-pointer ${
-                        theme === item.id
-                          ? "border-[#c5ff4a] bg-[#1a1a1a] text-white shadow-xs font-bold"
-                          : "border-[#262626] bg-[#0a0a0a] text-[#737373] hover:text-white hover:border-[#383838]"
-                      }`}
-                    >
-                      <span className="size-2.5 rounded-full shrink-0" style={{ backgroundColor: item.hex }} />
-                      <span className="text-[11px] capitalize">{item.name}</span>
-                    </button>
-                  ))}
+                  {THEMES.map((item) => {
+                    const isSelected = theme === item.id;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => setTheme(item.id)}
+                        style={isSelected ? { borderColor: item.hex, boxShadow: `0 0 12px ${item.hex}40` } : undefined}
+                        className={`flex items-center justify-center gap-1.5 py-2 px-2 min-h-[40px] rounded-[6px] border text-xs font-medium transition-all cursor-pointer ${
+                          isSelected
+                            ? "bg-[#1a1a1a] text-white font-bold"
+                            : "border-[#262626] bg-[#0a0a0a] text-[#737373] hover:text-white hover:border-[#383838]"
+                        }`}
+                      >
+                        <span className="size-2.5 rounded-full shrink-0" style={{ backgroundColor: item.hex }} />
+                        <span className="text-[11px] capitalize">{item.name}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -194,21 +200,25 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
                   {t.language || "Idioma"}
                 </label>
                 <div className="grid grid-cols-2 gap-2">
-                  {LOCALES.map((l) => (
-                    <button
-                      key={l.code}
-                      type="button"
-                      onClick={() => setLocale(l.code)}
-                      className={`flex items-center justify-between px-3 py-2.5 min-h-[42px] rounded-[6px] border text-xs font-medium transition-all cursor-pointer ${
-                        locale === l.code
-                          ? "bg-[#c5ff4a] text-black border-[#c5ff4a] font-bold shadow-xs"
-                          : "bg-[#0a0a0a] text-[#a3a3a3] border-[#262626] hover:text-white hover:border-[#383838]"
-                      }`}
-                    >
-                      <span>{l.label}</span>
-                      <span className="font-mono text-[10px] uppercase opacity-80">{l.code}</span>
-                    </button>
-                  ))}
+                  {LOCALES.map((l) => {
+                    const isSelected = locale === l.code;
+                    return (
+                      <button
+                        key={l.code}
+                        type="button"
+                        onClick={() => setLocale(l.code)}
+                        style={isSelected ? { backgroundColor: "var(--primary-accent)", color: "var(--primary-accent-text, #000000)", borderColor: "var(--primary-accent)" } : undefined}
+                        className={`flex items-center justify-between px-3 py-2.5 min-h-[42px] rounded-[6px] border text-xs font-medium transition-all cursor-pointer ${
+                          isSelected
+                            ? "font-bold shadow-xs"
+                            : "bg-[#0a0a0a] text-[#a3a3a3] border-[#262626] hover:text-white hover:border-[#383838]"
+                        }`}
+                      >
+                        <span>{l.label}</span>
+                        <span className="font-mono text-[10px] uppercase opacity-80">{l.code}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -221,9 +231,10 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
                   <button
                     type="button"
                     onClick={() => setSound(true)}
+                    style={sound ? { backgroundColor: "var(--primary-accent)", color: "var(--primary-accent-text, #000000)" } : undefined}
                     className={`flex items-center justify-center gap-2 py-2 px-3 min-h-[40px] rounded-[4px] text-xs font-semibold transition-all cursor-pointer ${
                       sound
-                        ? "bg-[#c5ff4a] text-black shadow-xs font-bold"
+                        ? "font-bold shadow-xs"
                         : "text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]"
                     }`}
                   >
@@ -233,9 +244,10 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
                   <button
                     type="button"
                     onClick={() => setSound(false)}
+                    style={!sound ? { backgroundColor: "var(--primary-accent)", color: "var(--primary-accent-text, #000000)" } : undefined}
                     className={`flex items-center justify-center gap-2 py-2 px-3 min-h-[40px] rounded-[4px] text-xs font-semibold transition-all cursor-pointer ${
                       !sound
-                        ? "bg-[#c5ff4a] text-black shadow-xs font-bold"
+                        ? "font-bold shadow-xs"
                         : "text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]"
                     }`}
                   >

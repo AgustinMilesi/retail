@@ -498,3 +498,124 @@ input[type="number"] {
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
   text-decoration: none;
 }
+
+
+/* ==============================================================================
+   Dynamic Color Theme Utility Mappings (High Specificity, No !important)
+   ============================================================================== */
+html [data-theme] .bg-\[\#c5ff4a\],
+html [data-theme] .bg-\[\#c6f827\],
+html .bg-\[\#c5ff4a\],
+html .bg-\[\#c6f827\],
+html .clay-btn,
+html .clay-pill-active {
+  background-color: var(--primary-accent);
+  color: var(--primary-accent-text, #000000);
+}
+
+html [data-theme] .text-\[\#c5ff4a\],
+html [data-theme] .text-\[\#c6f827\],
+html .text-\[\#c5ff4a\],
+html .text-\[\#c6f827\] {
+  color: var(--primary-accent);
+}
+
+html [data-theme] .border-\[\#c5ff4a\],
+html [data-theme] .border-\[\#c6f827\],
+html .border-\[\#c5ff4a\],
+html .border-\[\#c6f827\] {
+  border-color: var(--primary-accent);
+}
+
+html .border-\[\#c5ff4a\]\/30 {
+  border-color: rgba(var(--primary-accent-rgb, 197, 255, 74), 0.3);
+}
+
+html .bg-\[\#c5ff4a\]\/12 {
+  background-color: rgba(var(--primary-accent-rgb, 197, 255, 74), 0.12);
+}
+
+html .bg-\[\#c5ff4a\]\/20 {
+  background-color: rgba(var(--primary-accent-rgb, 197, 255, 74), 0.2);
+}
+
+/* ==============================================================================
+   Light Mode Canvas Adaptations (Specificity: 0, 2, 0)
+   ============================================================================== */
+html[data-mode="light"],
+html.light {
+  color-scheme: light;
+  background-color: #f4f4f5;
+  color: #09090b;
+}
+
+html[data-mode="light"] body,
+html.light body {
+  background-color: #f4f4f5;
+  color: #09090b;
+}
+
+html[data-mode="light"] .bg-\[\#060606\],
+html.light .bg-\[\#060606\] {
+  background-color: #f4f4f5;
+  color: #09090b;
+}
+
+html[data-mode="light"] .bg-\[\#0e0e0e\],
+html[data-mode="light"] .bg-\[\#0c0c0c\],
+html[data-mode="light"] .bg-\[\#000000\],
+html.light .bg-\[\#0e0e0e\],
+html.light .bg-\[\#0c0c0c\],
+html.light .bg-\[\#000000\] {
+  background-color: #ffffff;
+}
+
+html[data-mode="light"] .bg-\[\#121212\],
+html[data-mode="light"] .bg-\[\#141414\],
+html[data-mode="light"] .bg-\[\#161616\],
+html[data-mode="light"] .bg-\[\#1f1f1f\],
+html.light .bg-\[\#121212\],
+html.light .bg-\[\#141414\],
+html.light .bg-\[\#161616\],
+html.light .bg-\[\#1f1f1f\] {
+  background-color: #ffffff;
+}
+
+html[data-mode="light"] .bg-\[\#1a1a1a\],
+html[data-mode="light"] .bg-\[\#1e1e1e\],
+html[data-mode="light"] .bg-\[\#252525\],
+html.light .bg-\[\#1a1a1a\],
+html.light .bg-\[\#1e1e1e\],
+html.light .bg-\[\#252525\] {
+  background-color: #f0f0f2;
+}
+
+html[data-mode="light"] .border-\[\#262626\],
+html[data-mode="light"] .border-\[\#313131\],
+html[data-mode="light"] .border-\[\#2e2e2e\],
+html[data-mode="light"] .border-\[\#252525\],
+html.light .border-\[\#262626\],
+html.light .border-\[\#313131\],
+html.light .border-\[\#2e2e2e\],
+html.light .border-\[\#252525\] {
+  border-color: #e4e4e7;
+}
+
+html[data-mode="light"] .text-white,
+html.light .text-white {
+  color: #09090b;
+}
+
+html[data-mode="light"] .text-\[\#e5e5e5\],
+html.light .text-\[\#e5e5e5\] {
+  color: #18181b;
+}
+
+html[data-mode="light"] .text-\[\#a3a3a3\],
+html[data-mode="light"] .text-\[\#737373\],
+html[data-mode="light"] .text-\[\#7a7a7a\],
+html.light .text-\[\#a3a3a3\],
+html.light .text-\[\#737373\],
+html.light .text-\[\#7a7a7a\] {
+  color: #71717a;
+}

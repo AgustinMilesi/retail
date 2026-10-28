@@ -5,6 +5,7 @@ import Link from "next/link";
 import { NavLinks } from "@/components/NavLinks";
 import { PreferencesControls } from "@/components/PreferencesControls";
 import { SubmitButton } from "@/components/SubmitButton";
+import { usePreferences } from "@/components/PreferencesProvider";
 import { ui } from "@/components/ui";
 
 type ItemKey =
@@ -48,6 +49,7 @@ export function AppShell({
   logoutAction: () => Promise<void>;
   children: React.ReactNode;
 }) {
+  const { t } = usePreferences();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [desktopOpen, setDesktopOpen] = useState(true);
 
@@ -95,7 +97,7 @@ export function AppShell({
       <div className="flex items-center justify-between shrink-0 pb-2 border-b border-[#262626]">
         <div className="min-w-0 pr-2">
           <p className="text-[11px] font-sans font-medium text-[#737373] uppercase tracking-wider truncate mb-0.5">
-            {workspaceLabel}
+            {t.workspace || workspaceLabel}
           </p>
           <p className="text-white text-base font-bold leading-tight tracking-tight truncate">
             {organizationName}
@@ -141,10 +143,10 @@ export function AppShell({
           <form action={logoutAction} className="flex-1">
             <SubmitButton
               variant="ghost"
-              pendingText={signingOutLabel}
+              pendingText={t.signingOut || signingOutLabel}
               className="w-full text-center text-xs min-h-[44px] font-semibold tracking-wide"
             >
-              {signOutLabel}
+              {t.signOut || signOutLabel}
             </SubmitButton>
           </form>
 
@@ -152,8 +154,8 @@ export function AppShell({
             href="/app/settings"
             onClick={() => setMobileOpen(false)}
             className="size-11 min-h-[44px] min-w-[44px] shrink-0 rounded-[6px] bg-[#161616] border border-[#262626] hover:border-[#383838] hover:text-[#c5ff4a] text-[#a3a3a3] transition-colors flex items-center justify-center active:scale-95"
-            title={settingsLabel}
-            aria-label={settingsLabel}
+            title={t.settings || settingsLabel}
+            aria-label={t.settings || settingsLabel}
           >
             <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
@@ -225,8 +227,8 @@ export function AppShell({
           <Link
             href="/app/settings"
             className="size-11 min-h-[44px] min-w-[44px] shrink-0 border border-[#262626] hover:border-[#383838] hover:text-[#c5ff4a] text-[#a3a3a3] bg-[#161616] rounded-[6px] transition-colors duration-150 flex items-center justify-center active:scale-95"
-            title={settingsLabel}
-            aria-label={settingsLabel}
+            title={t.settings || settingsLabel}
+            aria-label={t.settings || settingsLabel}
           >
             <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
