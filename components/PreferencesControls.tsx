@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { usePreferences, THEMES } from "@/components/PreferencesProvider";
 import { LOCALES } from "@/lib/i18n";
 
-export function PreferencesControls() {
+export function PreferencesControls({ placement = "down" }: { placement?: "up" | "down" }) {
   const { theme, setTheme, mode, setMode, locale, setLocale, sound, setSound, t } = usePreferences();
   const [open, setOpen] = useState(false);
 
@@ -22,7 +22,7 @@ export function PreferencesControls() {
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 text-xs uppercase tracking-wider text-[var(--text-muted,#94A3B8)] hover:text-[var(--primary-accent)] transition-all py-1.5 px-3 rounded-xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] shadow-xs hover:shadow-sm select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-accent)]"
+        className="flex items-center gap-2 text-xs font-sans text-[#a3a3a3] hover:text-white transition-all min-h-[40px] px-3 py-2 rounded-[6px] bg-[#161616] border border-[#262626] hover:border-[#383838] select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c5ff4a] active:scale-[0.98]"
         title="Personalización y preferencias"
         aria-label="Abrir panel de preferencias"
         aria-expanded={open}
@@ -30,7 +30,7 @@ export function PreferencesControls() {
       >
         {/* Minimalist mode icon: Sun / Moon */}
         {mode === "dark" ? (
-          <svg className="size-3.5 text-[var(--text-muted,#94A3B8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="size-4 text-[#a3a3a3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -39,7 +39,7 @@ export function PreferencesControls() {
             />
           </svg>
         ) : (
-          <svg className="size-3.5 text-[var(--text-muted,#94A3B8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="size-4 text-[#a3a3a3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -51,16 +51,18 @@ export function PreferencesControls() {
 
         {/* Color accent dot */}
         <span
-          className="size-2 rounded-full shadow-xs ring-1 ring-white/20"
+          className="size-2.5 rounded-full ring-1 ring-white/20 shrink-0"
           style={{ backgroundColor: THEMES.find((x) => x.id === theme)?.hex }}
         />
 
         {/* Minimalist language code label */}
-        <span className="font-mono font-bold text-[11px] text-[var(--text-main,#FFFFFF)]">{locale.toUpperCase()}</span>
+        <span className="font-mono font-semibold text-xs text-white">{locale.toUpperCase()}</span>
 
-        {/* Chevron down */}
+        {/* Chevron */}
         <svg
-          className={`size-3 text-[var(--text-muted,#94A3B8)] transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          className={`size-3 text-[#737373] transition-transform duration-200 ${
+            open ? (placement === "up" ? "-rotate-180" : "rotate-180") : ""
+          }`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -72,21 +74,26 @@ export function PreferencesControls() {
       {open && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-          {/* Opens DOWNWARDS below the header button */}
-          <div role="dialog" aria-label="Panel de preferencias" className="absolute right-0 top-full mt-2 w-64 p-4 rounded-3xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] shadow-2xl z-50 space-y-4 animate-smooth-in">
+          <div
+            role="dialog"
+            aria-label="Panel de preferencias"
+            className={`absolute right-0 ${
+              placement === "up" ? "bottom-full mb-2" : "top-full mt-2"
+            } w-68 p-4 rounded-[6px] bg-[#121212] border border-[#262626] shadow-[0_16px_40px_rgba(0,0,0,0.85)] z-50 space-y-4 animate-smooth-in`}
+          >
             {/* Mode selection: Claro / Oscuro */}
             <div>
-              <p className="text-[10px] uppercase tracking-wider text-[var(--text-muted,#94A3B8)] font-bold mb-2">
+              <p className="text-[11px] font-sans font-medium text-[#737373] mb-2 uppercase tracking-wider">
                 {t.mode || "Aspecto"}
               </p>
-              <div className="grid grid-cols-2 gap-1.5 p-1 rounded-2xl bg-[var(--bg-card-subtle,#0F1520)] border border-[var(--border-card,#1E293B)]">
+              <div className="grid grid-cols-2 gap-1.5 p-1 rounded-[6px] bg-[#0a0a0a] border border-[#262626]">
                 <button
                   type="button"
                   onClick={() => setMode("light")}
-                  className={`flex items-center justify-center gap-2 py-1.5 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  className={`flex items-center justify-center gap-2 py-2 px-3 min-h-[38px] rounded-[4px] text-xs font-semibold transition-all cursor-pointer ${
                     mode === "light"
-                      ? "bg-[var(--primary-accent)] text-[var(--primary-accent-text,#0A0E14)] shadow-xs"
-                      : "text-[var(--text-muted,#94A3B8)] hover:text-[var(--text-main,#FFFFFF)]"
+                      ? "bg-[#c5ff4a] text-black shadow-xs font-bold"
+                      : "text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]"
                   }`}
                 >
                   <svg className="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,10 +110,10 @@ export function PreferencesControls() {
                 <button
                   type="button"
                   onClick={() => setMode("dark")}
-                  className={`flex items-center justify-center gap-2 py-1.5 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  className={`flex items-center justify-center gap-2 py-2 px-3 min-h-[38px] rounded-[4px] text-xs font-semibold transition-all cursor-pointer ${
                     mode === "dark"
-                      ? "bg-[var(--primary-accent)] text-[var(--primary-accent-text,#0A0E14)] shadow-xs"
-                      : "text-[var(--text-muted,#94A3B8)] hover:text-[var(--text-main,#FFFFFF)]"
+                      ? "bg-[#c5ff4a] text-black shadow-xs font-bold"
+                      : "text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]"
                   }`}
                 >
                   <svg className="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -123,8 +130,8 @@ export function PreferencesControls() {
             </div>
 
             {/* Color Accent Themes */}
-            <div className="border-t border-[var(--border-card,#1E293B)] pt-3">
-              <p className="text-[10px] uppercase tracking-wider text-[var(--text-muted,#94A3B8)] font-bold mb-2.5">
+            <div className="border-t border-[#262626] pt-3">
+              <p className="text-[11px] font-sans font-medium text-[#737373] mb-2 uppercase tracking-wider">
                 {t.theme || "Color de Acento"}
               </p>
               <div className="flex items-center justify-between gap-2 px-1">
@@ -133,10 +140,10 @@ export function PreferencesControls() {
                     key={item.id}
                     type="button"
                     onClick={() => setTheme(item.id)}
-                    className={`size-6 rounded-full transition-all cursor-pointer ${item.colorClass} ${
+                    className={`size-6 rounded-[4px] transition-all cursor-pointer ${item.colorClass} ${
                       theme === item.id
-                        ? "scale-125 ring-2 ring-offset-2 ring-[var(--primary-accent)] ring-offset-[var(--bg-card,#121824)] shadow-sm"
-                        : "opacity-60 hover:opacity-100 hover:scale-110"
+                        ? "scale-110 ring-2 ring-offset-2 ring-[#c5ff4a] ring-offset-[#121212] shadow-sm"
+                        : "opacity-60 hover:opacity-100 hover:scale-105"
                     }`}
                     title={item.name}
                   />
@@ -145,8 +152,8 @@ export function PreferencesControls() {
             </div>
 
             {/* Language Selection */}
-            <div className="border-t border-[var(--border-card,#1E293B)] pt-3">
-              <p className="text-[10px] uppercase tracking-wider text-[var(--text-muted,#94A3B8)] font-bold mb-2.5">
+            <div className="border-t border-[#262626] pt-3">
+              <p className="text-[11px] font-sans font-medium text-[#737373] mb-2 uppercase tracking-wider">
                 {t.language || "Idioma"}
               </p>
               <div className="grid grid-cols-2 gap-1.5">
@@ -155,10 +162,10 @@ export function PreferencesControls() {
                     key={l.code}
                     type="button"
                     onClick={() => setLocale(l.code)}
-                    className={`flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
+                    className={`flex items-center justify-between px-3 py-2 min-h-[38px] rounded-[4px] text-xs transition-all cursor-pointer ${
                       locale === l.code
-                        ? "bg-[var(--primary-accent)] text-[var(--primary-accent-text,#0A0E14)] font-bold shadow-xs"
-                        : "text-[var(--text-muted,#94A3B8)] hover:text-[var(--text-main,#FFFFFF)] hover:bg-[var(--bg-hover,#1E293B)]"
+                        ? "bg-[#c5ff4a] text-black font-semibold shadow-xs"
+                        : "text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a] border border-[#262626]"
                     }`}
                   >
                     <span>{l.label}</span>
@@ -169,23 +176,23 @@ export function PreferencesControls() {
             </div>
 
             {/* Tactile Sound FX Toggle */}
-            <div className="border-t border-[var(--border-card,#1E293B)] pt-3">
+            <div className="border-t border-[#262626] pt-3">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-[10px] uppercase tracking-wider text-[var(--text-muted,#94A3B8)] font-bold">
+                <p className="text-[11px] font-sans font-medium text-[#737373] uppercase tracking-wider">
                   {t.soundLabel || "Sonido Táctil"}
                 </p>
-                <span className="text-[10px] font-mono text-[var(--primary-accent,#c6f827)] font-bold">
+                <span className="text-[11px] font-mono text-[#c5ff4a] font-semibold">
                   {sound ? (t.soundOn || "ON") : (t.soundOff || "OFF")}
                 </span>
               </div>
-              <div className="grid grid-cols-2 gap-1.5 p-1 rounded-2xl bg-[var(--bg-card-subtle,#0F1520)] border border-[var(--border-card,#1E293B)]">
+              <div className="grid grid-cols-2 gap-1.5 p-1 rounded-[6px] bg-[#0a0a0a] border border-[#262626]">
                 <button
                   type="button"
                   onClick={() => setSound(true)}
-                  className={`flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  className={`flex items-center justify-center gap-1.5 py-2 px-3 min-h-[38px] rounded-[4px] text-xs font-semibold transition-all cursor-pointer ${
                     sound
-                      ? "bg-[var(--primary-accent)] text-[var(--primary-accent-text,#0A0E14)] shadow-xs"
-                      : "text-[var(--text-muted,#94A3B8)] hover:text-[var(--text-main,#FFFFFF)]"
+                      ? "bg-[#c5ff4a] text-black shadow-xs font-bold"
+                      : "text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]"
                   }`}
                 >
                   <span>🔊</span>
@@ -194,10 +201,10 @@ export function PreferencesControls() {
                 <button
                   type="button"
                   onClick={() => setSound(false)}
-                  className={`flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  className={`flex items-center justify-center gap-1.5 py-2 px-3 min-h-[38px] rounded-[4px] text-xs font-semibold transition-all cursor-pointer ${
                     !sound
-                      ? "bg-[var(--primary-accent)] text-[var(--primary-accent-text,#0A0E14)] shadow-xs"
-                      : "text-[var(--text-muted,#94A3B8)] hover:text-[var(--text-main,#FFFFFF)]"
+                      ? "bg-[#c5ff4a] text-black shadow-xs font-bold"
+                      : "text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]"
                   }`}
                 >
                   <span>🔇</span>

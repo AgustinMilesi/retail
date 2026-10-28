@@ -220,8 +220,6 @@ export function PosTerminal({
     const val = parseFloat(cleaned);
     if (isNaN(val) || val <= 0) return isWeight ? 100 : 1;
     if (isWeight) {
-      // 100 son 100 gramos, 1000 es 1 kilo (1000 gramos).
-      // Si el usuario ingresa valores como 1, 2, o 1.5 kilos: convertir a gramos
       if (val < 10) {
         return Math.round(val * 1000);
       }
@@ -265,7 +263,6 @@ export function PosTerminal({
     const line = activeTab.lines.find((l) => l.id === lineId);
     if (!line) return;
     const isWeight = line.saleType === "WEIGHT";
-    // For weight products: step is 100gr (or 50gr if current is <= 100gr)
     const step = isWeight ? (line.quantity <= 100 ? 50 : 100) : 1;
     const newQty = Math.round(line.quantity + direction * step);
     if (newQty <= 0) {
@@ -567,10 +564,10 @@ export function PosTerminal({
   }
 
   return (
-    <div className="space-y-5">
-      {/* 1. Barra de Pestañas de Pedidos (3 Pedidos Fijos) */}
-      <div className="flex items-center justify-between border-b border-[#EAE9F6] pb-4 overflow-x-auto gap-4">
-        <div className="flex items-center gap-2.5">
+    <div className="space-y-5 animate-smooth-in">
+      {/* 1. Barra de Pestañas de Pedidos (Ergonómica 44px min-height) */}
+      <div className="flex items-center justify-between border-b border-[#262626] pb-4 overflow-x-auto gap-4">
+        <div className="flex items-center gap-2">
           {tabs.slice(0, 3).map((tab) => {
             const isActive = tab.id === activeTabId;
             const countDisplay = tab.lines.length;
@@ -580,17 +577,17 @@ export function PosTerminal({
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTabId(tab.id)}
-                className={`flex items-center gap-2.5 px-6 py-2.5 rounded-full text-xs uppercase tracking-[0.15em] font-bold transition-all duration-200 select-none border ${
+                className={`flex items-center gap-2.5 px-5 py-2.5 min-h-[44px] rounded-[6px] text-xs font-semibold tracking-wide transition-all select-none border cursor-pointer active:scale-[0.98] ${
                   isActive
-                    ? "bg-[var(--primary-accent)] text-[var(--primary-accent-text,#0a0e14)] border-transparent shadow-[0_10px_24px_var(--primary-accent-shadow)] -translate-y-0.5 active:scale-95 cursor-pointer font-black"
-                    : "bg-[var(--bg-card,#121824)] text-[var(--text-muted,#94a3b8)] hover:text-[var(--text-main,#ffffff)] hover:bg-[var(--bg-hover,#1e293b)] border-[var(--border-card,#1E293B)] shadow-xs hover:shadow-sm cursor-pointer"
+                    ? "bg-[#c5ff4a]/12 text-white border-[#c5ff4a]/40 shadow-[0_0_12px_rgba(197,255,74,0.15)]"
+                    : "bg-[#141414] text-[#a3a3a3] hover:text-white hover:bg-[#1f1f1f] border-[#262626]"
                 }`}
               >
                 <span>{tab.label}</span>
                 {countDisplay > 0 && (
                   <span
-                    className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-black ${
-                      isActive ? "bg-black/20 text-inherit" : "bg-[var(--primary-accent)]/15 text-[var(--primary-accent)]"
+                    className={`text-[11px] px-2 py-0.5 rounded-full font-mono font-bold ${
+                      isActive ? "bg-[#c5ff4a] text-black" : "bg-[#262626] text-[#c5ff4a]"
                     }`}
                   >
                     {countDisplay}
@@ -602,7 +599,7 @@ export function PosTerminal({
         </div>
 
         {pendingSales.length > 0 && (
-          <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-amber-600 font-bold px-4 py-1.5 rounded-full bg-amber-50 border border-amber-200 shadow-xs">
+          <div className="flex items-center gap-2 text-xs font-semibold px-4 py-2 min-h-[40px] rounded-[6px] bg-amber-500/10 text-amber-300 border border-amber-500/30">
             <span>⏸️ {pendingSales.length} en espera</span>
           </div>
         )}
@@ -612,7 +609,7 @@ export function PosTerminal({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
         {/* COLUMNA 1: Buscar & Catálogo de Productos (Span 4) */}
         <div className="lg:col-span-4 space-y-4">
-          <div className="clay-card p-5 space-y-4">
+          <div className="p-5 rounded-[6px] bg-[#141414] border border-[#262626] space-y-4">
             <p className={ui.label}>Buscar y Agregar Producto</p>
             <div className="space-y-3">
               <input
@@ -628,7 +625,7 @@ export function PosTerminal({
                 }}
                 autoFocus
                 placeholder="Nombre, código de barra o SKU..."
-                className="w-full bg-[var(--bg-card-subtle,#0F1520)] border border-[var(--border-card,#1E293B)] focus:border-[var(--primary-accent)] focus:ring-2 focus:ring-[var(--primary-accent-shadow)] rounded-full px-5 py-3 text-sm text-[var(--text-main,#ffffff)] placeholder:text-[var(--text-muted,#94a3b8)] outline-none transition-all"
+                className={ui.input}
               />
 
               <div className="flex items-center gap-2">
@@ -644,7 +641,7 @@ export function PosTerminal({
                         handleAddClick();
                       }
                     }}
-                    className="w-full bg-[var(--bg-card-subtle,#0F1520)] border border-[var(--border-card,#1E293B)] focus:border-[var(--primary-accent)] rounded-full py-2.5 px-3 text-center font-bold font-mono text-sm text-[var(--text-main,#ffffff)] outline-none transition placeholder:text-[var(--text-muted,#94a3b8)] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                    className={`${ui.input} text-center font-bold`}
                     placeholder="Cant / gr"
                     title="Cantidad o gramos (ej: 100, 250, 500, 1000)"
                   />
@@ -652,7 +649,7 @@ export function PosTerminal({
                 <button
                   type="button"
                   onClick={handleAddClick}
-                  className="flex-1 py-2.5 px-5 bg-[var(--primary-accent)] hover:-translate-y-0.5 active:scale-95 text-[var(--primary-accent-text,#0a0e14)] font-black rounded-full transition-all text-xs uppercase tracking-wider shadow-[0_8px_20px_var(--primary-accent-shadow)] flex items-center justify-center gap-2 cursor-pointer"
+                  className={ui.button}
                 >
                   <span>+ Agregar al Pedido</span>
                 </button>
@@ -662,7 +659,7 @@ export function PosTerminal({
             {/* Listado rápido de productos encontrados */}
             <div className="space-y-2 max-h-[460px] overflow-y-auto pr-1 pt-1">
               {results.length === 0 ? (
-                <p className="text-xs text-[#72729A] italic py-8 text-center">
+                <p className="text-xs text-[#737373] italic py-8 text-center">
                   {query ? "No se encontraron productos coincidentes." : "Escribí o escaneá para ver productos."}
                 </p>
               ) : (
@@ -679,35 +676,35 @@ export function PosTerminal({
                         const qty = isWeight && quantityInput === "1" ? 100 : parseQuantity(quantityInput, isWeight);
                         addProductToCart(p, qty);
                       }}
-                      className={`group flex items-center justify-between p-3.5 rounded-2xl border text-xs cursor-pointer transition-all select-none ${
+                      className={`group flex items-center justify-between p-3.5 rounded-[6px] border text-xs cursor-pointer transition-all select-none ${
                         isSelected
-                          ? "border-[var(--primary-accent)] bg-[var(--primary-accent)]/10 shadow-sm ring-2 ring-[var(--primary-accent)]/30"
-                          : "border-[var(--border-card,#1E293B)] hover:border-[var(--primary-accent)]/40 bg-[var(--bg-card,#121824)] hover:bg-[var(--bg-hover,#1e293b)] shadow-xs hover:shadow-sm hover:-translate-y-0.5"
+                          ? "border-[#c5ff4a]/60 bg-[#c5ff4a]/10 ring-1 ring-[#c5ff4a]/40"
+                          : "border-[#262626] hover:border-[#383838] bg-[#1a1a1a] hover:bg-[#202020]"
                       } ${isOut ? "opacity-40 cursor-not-allowed" : "active:scale-[0.99]"}`}
                     >
                       <div className="min-w-0 pr-2">
                         <div className="flex items-center gap-1.5 flex-wrap">
-                          <p className="text-[var(--text-main,#ffffff)] font-bold group-hover:text-[var(--primary-accent)] transition truncate">
+                          <p className="text-white font-semibold group-hover:text-[#c5ff4a] transition truncate">
                             {p.name}
                           </p>
                           {isWeight && (
-                            <span className="text-[10px] px-2 py-0.5 bg-[var(--primary-accent)]/15 text-[var(--primary-accent)] rounded-full font-bold border border-[var(--primary-accent)]/30">
+                            <span className="text-[10px] px-2 py-0.5 bg-[#c5ff4a]/12 text-[#c5ff4a] rounded-[2px] font-bold border border-[#c5ff4a]/30">
                               x Kilo
                             </span>
                           )}
                           {p.size && (
-                            <span className="text-[10px] px-2 py-0.5 bg-[var(--bg-card-subtle,#0F1520)] text-[var(--text-muted,#94A3B8)] rounded-full font-mono">
+                            <span className="text-[10px] px-2 py-0.5 bg-[#262626] text-[#a3a3a3] rounded-[2px] font-mono">
                               {p.size}
                             </span>
                           )}
                         </div>
                       </div>
                       <div className="text-right whitespace-nowrap">
-                        <span className="text-[var(--primary-accent)] font-extrabold font-mono block text-sm">
-                          {money(p.priceCents)}{isWeight ? <span className="text-[10px] font-normal text-[#72729A]">/kg</span> : ""}
+                        <span className="text-[#c5ff4a] font-bold font-mono block text-sm">
+                          {money(p.priceCents)}{isWeight ? <span className="text-[10px] font-normal text-[#737373]">/kg</span> : ""}
                         </span>
                         {p.trackStock && (
-                          <span className={`text-[10px] font-mono ${isOut ? "text-rose-500 font-bold" : "text-[#72729A]"}`}>
+                          <span className={`text-[10px] font-mono ${isOut ? "text-rose-400 font-semibold" : "text-[#737373]"}`}>
                             {isOut ? "Sin stock" : `${p.stock} disp.`}
                           </span>
                         )}
@@ -722,12 +719,12 @@ export function PosTerminal({
 
         {/* COLUMNA 2: Pedido Actual (Lista de Ítems) (Span 4) */}
         <div className="lg:col-span-4 space-y-4">
-          <div className="clay-card p-5 space-y-4">
-            <div className="flex items-center justify-between border-b border-[#EAE9F6] pb-3">
+          <div className="p-5 rounded-[6px] bg-[#141414] border border-[#262626] space-y-4">
+            <div className="flex items-center justify-between border-b border-[#262626] pb-3">
               <div>
-                <p className="text-xs uppercase tracking-[0.15em] font-bold text-[#18182E] flex items-center gap-2">
+                <p className="text-xs uppercase tracking-wider font-semibold text-white flex items-center gap-2">
                   <span>{activeTab.label}</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#5E48E8]/10 text-[#5E48E8] font-mono font-bold">
+                  <span className="text-[11px] px-2 py-0.5 rounded-[4px] bg-[#c5ff4a]/12 text-[#c5ff4a] border border-[#c5ff4a]/30 font-mono font-bold">
                     {activeTab.lines.length} {activeTab.lines.length === 1 ? "ítem" : "ítems"}
                   </span>
                 </p>
@@ -737,7 +734,7 @@ export function PosTerminal({
                 <button
                   type="button"
                   onClick={clearActiveTab}
-                  className="text-xs uppercase tracking-wider text-[#72729A] hover:text-rose-500 transition font-semibold cursor-pointer"
+                  className="text-xs uppercase tracking-wider text-[#737373] hover:text-rose-400 transition font-semibold cursor-pointer"
                 >
                   Vaciar
                 </button>
@@ -746,18 +743,18 @@ export function PosTerminal({
 
             {activeTab.lines.length === 0 ? (
               <div className="text-center py-20 space-y-3">
-                <div className="size-14 rounded-3xl bg-[var(--bg-card-subtle,#0F1520)] flex items-center justify-center mx-auto text-[var(--text-muted,#94a3b8)] shadow-inner-xs">
+                <div className="size-14 rounded-[6px] bg-[#1c1c1c] border border-[#262626] flex items-center justify-center mx-auto text-[#737373]">
                   <svg className="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                   </svg>
                 </div>
-                <p className="text-[var(--text-main,#ffffff)] text-xs uppercase tracking-wider font-bold">Pedido vacío</p>
-                <p className="text-xs text-[var(--text-muted,#94a3b8)]">
+                <p className="text-white text-xs uppercase tracking-wider font-semibold">Pedido vacío</p>
+                <p className="text-xs text-[#737373]">
                   Agregá productos del catálogo o escaneá un código
                 </p>
               </div>
             ) : (
-              <ul className="divide-y divide-[var(--border-card,#1E293B)] max-h-[460px] overflow-y-auto pr-1">
+              <ul className="divide-y divide-[#262626] max-h-[460px] overflow-y-auto pr-1">
                 {activeTab.lines.map((item, idx) => {
                   const isWeight = item.saleType === "WEIGHT";
                   const lineTotal = Math.round(
@@ -770,32 +767,33 @@ export function PosTerminal({
                     <li key={item.id} className="py-3 flex items-center justify-between gap-3 text-xs">
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-1.5 flex-wrap">
-                          <p className="text-[#18182E] font-bold truncate">
-                            <span className="text-[#72729A] font-mono mr-1">{idx + 1}.</span>
+                          <p className="text-white font-medium truncate">
+                            <span className="text-[#737373] font-mono mr-1">{idx + 1}.</span>
                             {item.name}
                           </p>
                           {isWeight && (
-                            <span className="text-[9px] px-1.5 py-0.5 bg-[#5E48E8]/10 text-[#5E48E8] rounded-full font-bold border border-[#5E48E8]/20">
+                            <span className="text-[10px] px-1.5 py-0.5 bg-[#c5ff4a]/12 text-[#c5ff4a] rounded-[2px] font-bold border border-[#c5ff4a]/30">
                               x Kilo
                             </span>
                           )}
                           {item.size && (
-                            <span className="text-[9px] px-1.5 py-0.5 bg-[#EEF0FA] text-[#72729A] rounded-full font-mono">
+                            <span className="text-[10px] px-1.5 py-0.5 bg-[#262626] text-[#a3a3a3] rounded-[2px] font-mono">
                               {item.size}
                             </span>
                           )}
                         </div>
-                        <p className="text-[#72729A] text-[11px] mt-0.5 font-mono">
+                        <p className="text-[#a3a3a3] text-[11px] mt-0.5 font-mono">
                           {money(item.priceCents)} {isWeight ? "/kg" : "c/u"}
                         </p>
                       </div>
 
-                      <div className="flex items-center gap-2.5">
-                        <div className="flex items-center bg-[#F8F9FE] border border-[#EAE9F6] rounded-full p-0.5">
+                      <div className="flex items-center gap-2">
+                        {/* Stepper ergonómico (min 36x36px) */}
+                        <div className="flex items-center bg-[#0a0a0a] border border-[#262626] rounded-[6px] p-0.5">
                           <button
                             type="button"
                             onClick={() => adjustLineQty(item.id, -1)}
-                            className="size-7 flex items-center justify-center text-[#72729A] hover:text-[#5E48E8] hover:bg-white rounded-full font-bold transition active:scale-90 cursor-pointer"
+                            className="size-8 min-h-[32px] min-w-[32px] flex items-center justify-center text-[#a3a3a3] hover:text-white hover:bg-[#1e1e1e] rounded-[4px] font-bold transition active:scale-90 cursor-pointer"
                             title={isWeight ? "Restar 100gr" : "Restar 1"}
                           >
                             −
@@ -812,34 +810,34 @@ export function PosTerminal({
                                   e.currentTarget.blur();
                                 }
                               }}
-                              className="w-14 text-center font-extrabold text-[#18182E] font-mono bg-transparent border-0 focus:bg-white focus:ring-1 focus:ring-[#5E48E8] rounded-full py-0.5 text-xs [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                              className="w-12 text-center font-bold text-white font-mono bg-transparent border-0 focus:bg-[#1a1a1a] focus:ring-1 focus:ring-[#c5ff4a] rounded-[4px] py-0.5 text-xs outline-none"
                               title="Escribí los gramos con el teclado (ej: 100, 250, 500, 1000) y pulsá Enter"
                             />
-                            <span className="text-[10px] text-[#72729A] font-mono ml-0.5">
+                            <span className="text-[10px] text-[#737373] font-mono ml-0.5">
                               {isWeight ? "gr" : "u"}
                             </span>
                           </div>
                           <button
                             type="button"
                             onClick={() => adjustLineQty(item.id, 1)}
-                            className="size-7 flex items-center justify-center text-[#72729A] hover:text-[#5E48E8] hover:bg-white rounded-full font-bold transition active:scale-90 cursor-pointer"
+                            className="size-8 min-h-[32px] min-w-[32px] flex items-center justify-center text-[#a3a3a3] hover:text-white hover:bg-[#1e1e1e] rounded-[4px] font-bold transition active:scale-90 cursor-pointer"
                             title={isWeight ? "Sumar 100gr" : "Sumar 1"}
                           >
                             +
                           </button>
                         </div>
 
-                        <span className="text-[#18182E] font-black w-16 text-right font-mono text-sm">
+                        <span className="text-white font-bold w-16 text-right font-mono text-sm">
                           {money(lineTotal)}
                         </span>
 
                         <button
                           type="button"
                           onClick={() => removeLine(item.id)}
-                          className="size-6 flex items-center justify-center text-[#72729A] hover:text-rose-500 hover:bg-rose-50 rounded-full transition cursor-pointer"
+                          className="size-8 min-h-[32px] min-w-[32px] flex items-center justify-center text-[#737373] hover:text-rose-400 hover:bg-rose-950/20 rounded-[4px] transition cursor-pointer"
                           title="Eliminar del pedido"
                         >
-                          <svg className="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <line x1="18" y1="6" x2="6" y2="18" />
                             <line x1="6" y1="6" x2="18" y2="18" />
                           </svg>
@@ -855,12 +853,12 @@ export function PosTerminal({
 
         {/* COLUMNA 3: Totales, Métodos de Pago y Acciones (Span 4) */}
         <div className="lg:col-span-4 space-y-4">
-          <div className="clay-card p-6 space-y-6 relative overflow-hidden">
+          <div className="p-6 rounded-[6px] bg-[#141414] border border-[#262626] space-y-6 relative overflow-hidden">
             {/* Total Grande */}
-            <div className="flex items-baseline justify-between border-b border-[var(--border-card,#1E293B)] pb-4">
+            <div className="flex items-baseline justify-between border-b border-[#262626] pb-4">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--text-muted,#94A3B8)]">Total a Cobrar</p>
-                <p className="text-4xl sm:text-5xl font-black text-[var(--text-main,#ffffff)] tracking-tight font-mono mt-1">
+                <p className="text-xs font-semibold uppercase tracking-wider text-[#a3a3a3]">Total a Cobrar</p>
+                <p className="text-4xl sm:text-5xl font-black text-white tracking-tight font-mono mt-1">
                   {money(totals.totalCents)}
                 </p>
               </div>
@@ -871,16 +869,16 @@ export function PosTerminal({
                     value={activeTab.discount}
                     onChange={(e) => updateActiveTab({ discount: e.target.value })}
                     placeholder="Desc. $"
-                    className="w-full bg-[var(--bg-card-subtle,#0F1520)] border border-[var(--border-card,#1E293B)] rounded-xl focus:border-[var(--primary-accent)] text-xs text-[var(--text-main,#ffffff)] text-right outline-none py-1.5 px-2 placeholder:text-[var(--text-muted,#94A3B8)] font-mono transition"
+                    className="w-full bg-[#000000] border border-[#262626] rounded-[6px] focus:border-[#c5ff4a] text-xs text-white text-right outline-none py-1.5 px-2 placeholder:text-[#666666] font-mono transition"
                     title="Descuento en pesos"
                   />
                 </div>
               )}
             </div>
 
-            {/* Selector de Método de Pago Directo */}
+            {/* Selector de Método de Pago Directo (Ergonómico 44px min-height) */}
             <div className="space-y-2.5">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--text-muted,#94A3B8)]">Método de Pago</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#a3a3a3]">Método de Pago</p>
 
               <div className="grid grid-cols-3 gap-2">
                 {[
@@ -918,10 +916,10 @@ export function PosTerminal({
                       key={m.id}
                       type="button"
                       onClick={() => updateActiveTab({ paymentMethod: m.id })}
-                      className={`py-3 px-2 rounded-2xl text-xs uppercase tracking-wider font-bold transition-all flex flex-col items-center justify-center gap-1.5 select-none border cursor-pointer ${
+                      className={`min-h-[48px] py-2.5 px-2 rounded-[6px] text-xs font-semibold tracking-wide transition-all flex flex-col items-center justify-center gap-1.5 select-none border cursor-pointer active:scale-[0.98] ${
                         isSelected
-                          ? "bg-[var(--primary-accent)] text-[var(--primary-accent-text,#0a0e14)] border-transparent shadow-[0_8px_20px_var(--primary-accent-shadow)] -translate-y-0.5 font-black"
-                          : "bg-[var(--bg-card-subtle,#0F1520)] text-[var(--text-muted,#94A3B8)] border-[var(--border-card,#1E293B)] hover:text-[var(--text-main,#ffffff)] hover:bg-[var(--bg-hover,#1e293b)] shadow-xs"
+                          ? "bg-[#c5ff4a]/15 text-[#c5ff4a] border-[#c5ff4a]/50 shadow-[0_0_12px_rgba(197,255,74,0.15)] font-bold"
+                          : "bg-[#181818] text-[#a3a3a3] border-[#262626] hover:text-white hover:bg-[#202020]"
                       }`}
                     >
                       {m.icon}
@@ -932,17 +930,17 @@ export function PosTerminal({
               </div>
             </div>
 
-            {/* Botones Principales de Cobro */}
+            {/* Botones Principales de Cobro (Ergonómicos min-h-[44px]) */}
             <div className="space-y-3 pt-1">
               <button
                 type="button"
                 disabled={activeTab.lines.length === 0 || busy}
                 onClick={() => handleQuickCharge()}
-                className="w-full py-4 px-6 bg-[var(--primary-accent)] hover:-translate-y-0.5 active:scale-[0.98] disabled:opacity-40 disabled:hover:translate-y-0 text-[var(--primary-accent-text,#0a0e14)] font-black text-sm uppercase tracking-[0.15em] rounded-full transition-all shadow-[0_12px_28px_var(--primary-accent-shadow)] flex items-center justify-between cursor-pointer"
+                className="w-full min-h-[48px] py-3 px-5 bg-[#c5ff4a] hover:bg-[#b8f73b] active:scale-[0.98] disabled:opacity-40 text-black font-bold text-xs uppercase tracking-wider rounded-[6px] shadow-[0_0_16px_rgba(197,255,74,0.3)] flex items-center justify-between cursor-pointer transition-all"
               >
                 <span className="flex items-center gap-2">
                   <span>Cobrar</span>
-                  <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-black/20 text-inherit">
+                  <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-[4px] bg-black/15 text-inherit">
                     {activeTab.paymentMethod === "CASH"
                       ? "Efectivo"
                       : activeTab.paymentMethod === "TRANSFER"
@@ -967,7 +965,7 @@ export function PosTerminal({
                     setSplitDebtorAmount("");
                     setShowSplitModal(true);
                   }}
-                  className="w-full py-2.5 px-3 rounded-full text-xs uppercase tracking-wider font-bold bg-white text-[#18182E] border border-[#EAE9F6] hover:bg-[#F8F9FE] shadow-xs hover:shadow-sm transition cursor-pointer text-center truncate disabled:opacity-40"
+                  className={ui.ghost}
                 >
                   Dividir Pago
                 </button>
@@ -976,7 +974,7 @@ export function PosTerminal({
                   type="button"
                   disabled={activeTab.lines.length === 0}
                   onClick={handleMoveToPending}
-                  className="w-full py-2.5 px-3 border border-amber-300 bg-amber-50 hover:bg-amber-100 disabled:opacity-40 rounded-full transition text-xs uppercase tracking-wider text-amber-800 font-bold active:scale-95 shadow-xs text-center truncate cursor-pointer"
+                  className="min-h-[44px] px-4 py-2.5 rounded-[6px] text-xs font-semibold tracking-wide bg-amber-500/10 text-amber-300 border border-amber-500/30 hover:bg-amber-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-40"
                   title="Poner venta en espera para atender a otro cliente"
                 >
                   ⏸️ En Espera
@@ -985,17 +983,17 @@ export function PosTerminal({
             </div>
 
             {/* Sección: Enviar a Deudor (Fiado) */}
-            <div className="pt-4 border-t border-[#EAE9F6] space-y-3">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#72729A]">A Cuenta de Deudor (Fiado)</p>
+            <div className="pt-4 border-t border-[#262626] space-y-3">
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#a3a3a3]">A Cuenta de Deudor (Fiado)</p>
 
               <select
                 value={activeTab.debtorId}
                 onChange={(e) => updateActiveTab({ debtorId: e.target.value })}
-                className="w-full bg-[#F8F9FE] border border-[#EAE9F6] focus:border-[#5E48E8] rounded-2xl px-3.5 py-2.5 text-xs text-[#18182E] outline-none transition"
+                className={ui.input}
               >
-                <option value="" className="text-[#72729A]">Seleccionar cliente deudor...</option>
+                <option value="" className="text-[#737373]">Seleccionar cliente deudor...</option>
                 {debtors.map((d) => (
-                  <option key={d.id} value={d.id} className="text-[#18182E]">
+                  <option key={d.id} value={d.id} className="text-white bg-[#141414]">
                     {d.name} {d.saldoFavorCents > 0 ? `(Favor: ${money(d.saldoFavorCents)})` : ""}
                   </option>
                 ))}
@@ -1005,7 +1003,7 @@ export function PosTerminal({
                 type="button"
                 disabled={!activeTab.debtorId || activeTab.lines.length === 0 || busy}
                 onClick={handleSendToDebtor}
-                className="w-full py-2.5 px-3 rounded-full text-xs uppercase tracking-wider font-bold bg-white text-[#72729A] border border-[#EAE9F6] hover:border-amber-400 hover:bg-amber-50 hover:text-amber-800 shadow-xs transition cursor-pointer disabled:opacity-40"
+                className="w-full min-h-[44px] py-2.5 px-4 rounded-[6px] text-xs font-semibold uppercase tracking-wide bg-[#161616] text-amber-300 border border-amber-900/40 hover:bg-amber-950/30 hover:border-amber-600/50 transition cursor-pointer disabled:opacity-40"
               >
                 Enviar al Fiado
               </button>
@@ -1014,20 +1012,20 @@ export function PosTerminal({
 
           {/* Sección Lateral: Pendientes de Pago */}
           {pendingSales.length > 0 && (
-            <div className="clay-card p-5 space-y-3 border-amber-200 bg-amber-50/50">
+            <div className="p-5 rounded-[6px] space-y-3 border border-amber-500/30 bg-amber-500/5">
               <div className="flex items-center justify-between">
-                <p className="text-xs font-bold text-amber-800 uppercase tracking-wider flex items-center gap-2">
-                  <span className="size-2 rounded-full bg-amber-500 animate-pulse" />
+                <p className="text-xs font-semibold text-amber-300 uppercase tracking-wider flex items-center gap-2">
+                  <span className="size-2 rounded-full bg-amber-400 animate-pulse" />
                   <span>Pendientes de Pago ({pendingSales.length})</span>
                 </p>
               </div>
 
-              <ul className="divide-y divide-amber-200/50 space-y-2 max-h-60 overflow-y-auto pr-1">
+              <ul className="divide-y divide-amber-500/20 space-y-2 max-h-60 overflow-y-auto pr-1">
                 {pendingSales.map((p) => (
                   <li key={p.id} className="pt-2 flex items-center justify-between gap-3 text-xs">
                     <div>
-                      <span className="text-[#18182E] font-bold block">{money(p.totalCents)}</span>
-                      <span className="text-[#72729A] text-[10px]">
+                      <span className="text-white font-bold block font-mono">{money(p.totalCents)}</span>
+                      <span className="text-[#a3a3a3] text-[11px]">
                         {p.timeStr} · {p.lines.length} {p.lines.length === 1 ? "ítem" : "ítems"}
                         {p.debtorName ? ` · ${p.debtorName}` : ""}
                       </span>
@@ -1037,17 +1035,17 @@ export function PosTerminal({
                       <button
                         type="button"
                         onClick={() => handleRestorePending(p)}
-                        className="px-3 py-1 bg-amber-200 hover:bg-amber-300 text-amber-900 rounded-full text-xs font-bold transition active:scale-95 cursor-pointer shadow-xs"
+                        className="px-3 py-1.5 min-h-[36px] bg-amber-400 hover:bg-amber-300 text-black rounded-[4px] text-xs font-bold transition active:scale-95 cursor-pointer shadow-xs"
                       >
                         Recuperar
                       </button>
                       <button
                         type="button"
                         onClick={() => handleDiscardPending(p.id)}
-                        className="text-[#72729A] hover:text-rose-500 p-1 cursor-pointer"
+                        className="text-[#737373] hover:text-rose-400 p-2 cursor-pointer"
                         title="Descartar"
                       >
-                        <svg className="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <line x1="18" y1="6" x2="6" y2="18" />
                           <line x1="6" y1="6" x2="18" y2="18" />
                         </svg>
@@ -1076,11 +1074,11 @@ export function PosTerminal({
         const debtorMissing = splitDebtorCents > 0 && !splitDebtorId;
 
         return (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#18182E]/40 backdrop-blur-md animate-in fade-in duration-200">
-            <div className="clay-card max-w-lg w-full p-6 sm:p-7 space-y-5 rounded-3xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] shadow-2xl max-h-[90vh] overflow-y-auto">
-              <div className="flex items-center justify-between border-b border-[var(--border-card,#1E293B)] pb-3">
-                <p className="text-base font-extrabold text-[var(--text-main,#ffffff)] uppercase tracking-wider flex items-center gap-2">
-                  <svg className="size-4 text-[var(--primary-accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
+            <div className="max-w-lg w-full p-6 sm:p-7 space-y-5 rounded-[6px] bg-[#121212] border border-[#262626] shadow-[0_20px_50px_rgba(0,0,0,0.9)] max-h-[90vh] overflow-y-auto">
+              <div className="flex items-center justify-between border-b border-[#262626] pb-3">
+                <p className="text-base font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                  <svg className="size-4 text-[#c5ff4a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="12" y1="1" x2="12" y2="23" />
                     <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                   </svg>
@@ -1089,18 +1087,18 @@ export function PosTerminal({
                 <button
                   type="button"
                   onClick={() => setShowSplitModal(false)}
-                  className="text-[var(--text-muted,#94A3B8)] hover:text-[var(--text-main,#ffffff)] p-1 cursor-pointer"
+                  className="size-9 flex items-center justify-center text-[#737373] hover:text-white rounded-[4px] cursor-pointer"
                 >
-                  <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
                   </svg>
                 </button>
               </div>
 
-              <div className="flex items-baseline justify-between bg-[var(--bg-card-subtle,#0F1520)] p-4 rounded-2xl border border-[var(--border-card,#1E293B)]">
+              <div className="flex items-baseline justify-between bg-[#0a0a0a] p-4 rounded-[6px] border border-[#262626]">
                 <span className={ui.label}>Total a Cubrir</span>
-                <span className="text-2xl font-black text-[var(--primary-accent)] font-mono">{money(totals.totalCents)}</span>
+                <span className="text-2xl font-black text-[#c5ff4a] font-mono">{money(totals.totalCents)}</span>
               </div>
 
               <div className="space-y-4">
@@ -1144,9 +1142,9 @@ export function PosTerminal({
                 </div>
 
                 {/* Enviar a Fiado / Deudor */}
-                <div className="p-4 rounded-2xl bg-amber-50/60 border border-amber-200 space-y-3">
+                <div className="p-4 rounded-[6px] bg-amber-500/5 border border-amber-500/20 space-y-3">
                   <div className="flex items-center justify-between">
-                    <label className="text-xs font-bold uppercase tracking-wider text-amber-900 flex items-center gap-1.5">
+                    <label className="text-xs font-semibold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
                       <span>Cuenta Corriente (Fiado)</span>
                     </label>
                     {remainderForDebtor > 0 && (
@@ -1155,7 +1153,7 @@ export function PosTerminal({
                         onClick={() =>
                           setSplitDebtorAmount(String(remainderForDebtor / 100))
                         }
-                        className="text-[11px] font-mono text-[#5E48E8] hover:text-[#4F38D8] font-bold cursor-pointer underline"
+                        className="text-[11px] font-mono text-[#c5ff4a] hover:underline font-bold cursor-pointer"
                       >
                         Mandar resto ({money(remainderForDebtor)})
                       </button>
@@ -1169,14 +1167,14 @@ export function PosTerminal({
                   >
                     <option value="">-- Seleccionar cliente fiado --</option>
                     {debtors.map((d) => (
-                      <option key={d.id} value={d.id}>
+                      <option key={d.id} value={d.id} className="text-white bg-[#141414]">
                         {d.name} {d.saldoFavorCents > 0 ? `(A favor: ${money(d.saldoFavorCents)})` : ""}
                       </option>
                     ))}
                   </select>
 
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#72729A] font-mono text-sm font-bold">
+                    <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#737373] font-mono text-sm font-bold">
                       $
                     </span>
                     <input
@@ -1185,7 +1183,7 @@ export function PosTerminal({
                       value={splitDebtorAmount}
                       onChange={(e) => setSplitDebtorAmount(e.target.value)}
                       placeholder="Monto a mandar a cuenta corriente (0)"
-                      className={`${ui.input} pl-8 font-mono`}
+                      className={`${ui.input} pl-8`}
                     />
                   </div>
                 </div>
@@ -1193,12 +1191,12 @@ export function PosTerminal({
 
               {/* Status Box */}
               {debtorMissing ? (
-                <div className="p-3 rounded-2xl bg-rose-50 border border-rose-200 text-xs text-rose-700 font-medium">
+                <div className="p-3 rounded-[6px] bg-rose-500/10 border border-rose-500/20 text-xs text-rose-300 font-medium">
                   Ingresaste un monto de fiado pero no seleccionaste ningún cliente deudor.
                 </div>
               ) : remainingCents > 0 ? (
-                <div className="p-3 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-800 flex items-center justify-between">
-                  <span>Faltan <strong className="font-mono">{money(remainingCents)}</strong> para cubrir el total.</span>
+                <div className="p-3 rounded-[6px] bg-amber-500/10 border border-amber-500/20 text-xs text-amber-300 flex items-center justify-between">
+                  <span>Faltan <strong className="font-mono text-white">{money(remainingCents)}</strong> para cubrir el total.</span>
                   {splitDebtorId && (
                     <button
                       type="button"
@@ -1207,24 +1205,24 @@ export function PosTerminal({
                         const newDebtorCents = Math.round(currentDebtor * 100) + remainingCents;
                         setSplitDebtorAmount(String(newDebtorCents / 100));
                       }}
-                      className="px-2.5 py-1 rounded-full bg-amber-200 text-amber-900 font-bold hover:bg-amber-300 transition text-[11px] cursor-pointer"
+                      className="px-2.5 py-1 rounded-[4px] bg-amber-400 text-black font-bold hover:bg-amber-300 transition text-[11px] cursor-pointer"
                     >
                       + Sumar al fiado
                     </button>
                   )}
                 </div>
               ) : remainingCents === 0 ? (
-                <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 font-medium flex items-center justify-between">
+                <div className="p-3 rounded-[6px] bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-300 font-medium flex items-center justify-between">
                   <span>Total cubierto exactamente.</span>
                   {splitDebtorCents > 0 && (
-                    <span className="font-mono font-bold text-amber-800">
+                    <span className="font-mono font-bold text-amber-300">
                       (Fiado: {money(splitDebtorCents)})
                     </span>
                   )}
                 </div>
               ) : (
-                <div className="p-3 rounded-2xl bg-sky-50 border border-sky-200 text-xs text-sky-800">
-                  Vuelto en efectivo a entregar: <strong className="font-mono">{money(-remainingCents)}</strong>
+                <div className="p-3 rounded-[6px] bg-sky-500/10 border border-sky-500/20 text-xs text-sky-300 font-mono">
+                  Vuelto en efectivo a entregar: <strong className="font-mono text-white">{money(-remainingCents)}</strong>
                 </div>
               )}
 
@@ -1232,7 +1230,7 @@ export function PosTerminal({
                 <button
                   type="button"
                   onClick={() => setShowSplitModal(false)}
-                  className="flex-1 py-3 px-4 rounded-full text-xs uppercase tracking-wider font-bold bg-white text-[#72729A] border border-[#EAE9F6] hover:bg-[#F8F9FE] shadow-xs transition cursor-pointer text-center"
+                  className={ui.ghost}
                 >
                   Cancelar
                 </button>
@@ -1240,7 +1238,7 @@ export function PosTerminal({
                   type="button"
                   disabled={busy || !isCovered || debtorMissing}
                   onClick={handleConfirmSplit}
-                  className="flex-1 py-3 px-4 rounded-full text-xs uppercase tracking-wider font-black text-[var(--primary-accent-text,#0a0e14)] bg-[var(--primary-accent)] shadow-[0_8px_20px_var(--primary-accent-shadow)] hover:-translate-y-0.5 active:scale-95 transition disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer text-center"
+                  className={ui.button}
                 >
                   Confirmar Cobro
                 </button>
@@ -1252,26 +1250,26 @@ export function PosTerminal({
 
       {/* 4. Modal de Venta Registrada con Éxito */}
       {doneSale && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#18182E]/40 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="clay-card max-w-sm w-full p-8 text-center space-y-6 rounded-3xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] shadow-2xl">
-            <div className="size-16 rounded-3xl bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center mx-auto shadow-xs">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="max-w-sm w-full p-8 text-center space-y-6 rounded-[6px] bg-[#121212] border border-[#262626] shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
+            <div className="size-16 rounded-[6px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center mx-auto shadow-xs">
               <svg className="size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
 
             <div className="space-y-1">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--text-muted,#94A3B8)]">Venta Registrada</p>
-              <p className="text-2xl font-black text-[var(--text-main,#ffffff)]">Ticket #{doneSale.number}</p>
-              <p className="text-3xl font-black text-[var(--primary-accent)] font-mono mt-1">{money(doneSale.totalCents)}</p>
-              <p className="text-xs text-[var(--text-muted,#94A3B8)]">{doneSale.methodLabel}</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#a3a3a3]">Venta Registrada</p>
+              <p className="text-2xl font-bold text-white">Ticket #{doneSale.number}</p>
+              <p className="text-3xl font-black text-[#c5ff4a] font-mono mt-1">{money(doneSale.totalCents)}</p>
+              <p className="text-xs text-[#737373]">{doneSale.methodLabel}</p>
             </div>
 
             <div className="flex flex-col gap-2.5 pt-2">
               <button
                 type="button"
                 onClick={() => setDoneSale(null)}
-                className="w-full py-3.5 px-5 rounded-full text-xs uppercase tracking-wider font-black text-[var(--primary-accent-text,#0a0e14)] bg-[var(--primary-accent)] shadow-[0_8px_20px_var(--primary-accent-shadow)] hover:-translate-y-0.5 active:scale-95 transition cursor-pointer"
+                className={ui.button}
               >
                 Siguiente Venta
               </button>
@@ -1280,7 +1278,7 @@ export function PosTerminal({
                 <Link
                   href={`/pos/receipt/${doneSale.id}`}
                   target="_blank"
-                  className="w-full py-2.5 px-4 rounded-full text-xs font-bold text-[var(--text-muted,#94A3B8)] hover:text-[var(--text-main,#ffffff)] bg-[var(--bg-card-subtle,#0F1520)] border border-[var(--border-card,#1E293B)] hover:bg-[var(--bg-hover,#1e293b)] shadow-xs transition text-center block"
+                  className={ui.ghost}
                 >
                   Ver / Imprimir Recibo
                 </Link>

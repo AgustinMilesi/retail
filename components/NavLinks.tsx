@@ -18,13 +18,15 @@ type ItemKey =
   | "expenses";
 type Item = { href: string; key: ItemKey; label: string; badge?: number };
 
-function NavIcon({ itemKey }: { itemKey: ItemKey }) {
+function NavIcon({ itemKey, active }: { itemKey: ItemKey; active: boolean }) {
   const iconProps = {
-    className: "size-4 shrink-0 transition-colors",
+    className: `size-5 shrink-0 transition-colors ${
+      active ? "text-[#c5ff4a]" : "text-[#737373] group-hover:text-[#ffffff]"
+    }`,
     fill: "none",
     stroke: "currentColor",
     viewBox: "0 0 24 24",
-    strokeWidth: "1.75",
+    strokeWidth: active ? "2" : "1.75",
     strokeLinecap: "round" as const,
     strokeLinejoin: "round" as const,
   };
@@ -111,7 +113,7 @@ export function NavLinks({ items, onItemClick }: { items: Item[]; onItemClick?: 
   const { t } = usePreferences();
 
   return (
-    <nav className="flex flex-col gap-1">
+    <nav className="flex flex-col gap-1.5">
       {items.map((item) => {
         const active =
           item.href === "/app" ? pathname === "/app" : pathname.startsWith(item.href);
@@ -123,18 +125,22 @@ export function NavLinks({ items, onItemClick }: { items: Item[]; onItemClick?: 
             href={item.href}
             prefetch={false}
             onClick={onItemClick}
-            className={`flex items-center justify-between gap-3 px-3.5 py-2 rounded-[4px] text-xs font-sans uppercase tracking-[0.16em] transition-colors duration-150 select-none ${
+            className={`group relative flex items-center justify-between gap-3 px-3.5 py-2.5 min-h-[44px] rounded-[6px] text-[13px] sm:text-sm font-sans transition-all duration-150 select-none cursor-pointer active:scale-[0.98] ${
               active
-                ? "bg-[var(--primary-accent)] text-[#000000] shadow-[0_0_8px_rgba(197,255,74,0.35)] font-semibold"
-                : "text-[var(--text-muted,#7a7a7a)] hover:text-[var(--primary-accent)] hover:bg-[var(--bg-hover,#252525)] border border-transparent hover:border-[#313131]"
+                ? "bg-[#c5ff4a]/12 text-white border border-[#c5ff4a]/30 shadow-[0_0_12px_rgba(197,255,74,0.12)] font-semibold"
+                : "text-[#a3a3a3] hover:text-white hover:bg-[#181818] border border-transparent hover:border-[#262626] font-medium"
             }`}
           >
-            <span className="flex items-center gap-2.5 truncate">
-              <NavIcon itemKey={item.key} />
+            <span className="flex items-center gap-3 truncate">
+              {active ? (
+                <span className="w-1 h-4 rounded-full bg-[#c5ff4a] shadow-[0_0_8px_#c5ff4a] shrink-0 -ml-1" />
+              ) : null}
+              <NavIcon itemKey={item.key} active={active} />
               <span className="truncate">{translatedLabel}</span>
             </span>
+
             {item.badge ? (
-              <span className="min-w-4 h-4 px-1 rounded-[2px] bg-rose-500 text-white text-[10px] font-mono font-medium flex items-center justify-center shrink-0">
+              <span className="min-w-5 h-5 px-1.5 rounded-full bg-[#c5ff4a]/20 text-[#c5ff4a] border border-[#c5ff4a]/30 text-[11px] font-mono font-medium flex items-center justify-center shrink-0">
                 {item.badge}
               </span>
             ) : null}
