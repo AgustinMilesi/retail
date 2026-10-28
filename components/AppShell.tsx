@@ -106,7 +106,7 @@ export function AppShell({
         <button
           type="button"
           onClick={() => setMobileOpen(false)}
-          className="md:hidden size-11 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-[6px] bg-[#161616] border border-[#262626] text-[#a3a3a3] hover:text-white hover:border-[#383838] active:scale-95 transition-all cursor-pointer"
+          className="md:hidden size-11 min-h-[44px] min-w-[44px] shrink-0 flex items-center justify-center rounded-[6px] bg-[#161616] border border-[#262626] text-[#a3a3a3] hover:text-white hover:border-[#383838] active:scale-95 transition-all cursor-pointer"
           aria-label="Cerrar menú"
         >
           <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -125,11 +125,11 @@ export function AppShell({
       <div className="shrink-0 space-y-3 pt-3 border-t border-[#262626]">
         {/* User Identity & Preferences */}
         <div className="flex items-center justify-between gap-2 bg-[#121212] border border-[#262626] rounded-[6px] p-2">
-          <div className="flex items-center gap-2 min-w-0">
+          <div className="flex items-center gap-2 min-w-0 flex-1 mr-1">
             <div className="size-8 rounded-full bg-[#1e1e1e] border border-[#2e2e2e] flex items-center justify-center text-xs font-mono font-bold text-[#c5ff4a] shrink-0">
               {userEmail.slice(0, 1).toUpperCase()}
             </div>
-            <p className="text-[#a3a3a3] text-xs font-mono truncate max-w-[130px]" title={userEmail}>
+            <p className="text-[#a3a3a3] text-xs font-mono truncate" title={userEmail}>
               {userEmail}
             </p>
           </div>
@@ -151,7 +151,7 @@ export function AppShell({
           <Link
             href="/app/settings"
             onClick={() => setMobileOpen(false)}
-            className="size-11 min-h-[44px] min-w-[44px] rounded-[6px] bg-[#161616] border border-[#262626] hover:border-[#383838] hover:text-[#c5ff4a] text-[#a3a3a3] transition-colors flex items-center justify-center shrink-0 active:scale-95"
+            className="size-11 min-h-[44px] min-w-[44px] shrink-0 rounded-[6px] bg-[#161616] border border-[#262626] hover:border-[#383838] hover:text-[#c5ff4a] text-[#a3a3a3] transition-colors flex items-center justify-center active:scale-95"
             title={settingsLabel}
             aria-label={settingsLabel}
           >
@@ -171,11 +171,12 @@ export function AppShell({
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#060606] text-white">
-      {/* 1. Header Superior Unificado con Botón Hamburguesa */}
-      <header className="sticky top-0 z-30 flex items-center justify-between px-4 sm:px-6 py-2.5 bg-[#0e0e0e] border-b border-[#262626] shrink-0 h-16 shadow-[0_4px_24px_rgba(0,0,0,0.6)]">
-        <div className="flex items-center gap-3">
-          {/* Botón Hamburguesa ergonómico (min 44x44px) */}
+    <div className="min-h-screen flex flex-col bg-[#060606] text-white w-full max-w-full overflow-x-hidden">
+      {/* 1. Header Superior Unificado con Botón Hamburguesa - Nunca desborda horizontalmente */}
+      <header className="sticky top-0 z-30 flex items-center justify-between px-3 sm:px-6 py-2.5 bg-[#0e0e0e] border-b border-[#262626] shrink-0 h-16 w-full max-w-full overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.6)]">
+        {/* Lado izquierdo: Botón Hamburguesa + Logo + Nombre (ocupa espacio restante y trunca si es necesario) */}
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 mr-2">
+          {/* Botón Hamburguesa ergonómico (min 44x44px, shrink-0) */}
           <button
             type="button"
             onClick={() => {
@@ -185,7 +186,7 @@ export function AppShell({
                 toggleDesktopSidebar();
               }
             }}
-            className="size-11 min-h-[44px] min-w-[44px] rounded-[6px] text-[#c5ff4a] bg-[#161616] hover:bg-[#202020] transition-all duration-150 border border-[#262626] hover:border-[#383838] flex items-center justify-center active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c5ff4a] cursor-pointer"
+            className="size-11 min-h-[44px] min-w-[44px] shrink-0 rounded-[6px] text-[#c5ff4a] bg-[#161616] hover:bg-[#202020] transition-all duration-150 border border-[#262626] hover:border-[#383838] flex items-center justify-center active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c5ff4a] cursor-pointer"
             title="Alternar menú / Más espacio"
             aria-label="Abrir o cerrar menú"
             aria-expanded={mobileOpen}
@@ -200,8 +201,8 @@ export function AppShell({
             </svg>
           </button>
 
-          <div className="flex items-center gap-2.5">
-            <span className="size-9 rounded-[6px] bg-[#000000] border border-[#262626] flex items-center justify-center shrink-0 p-1.5">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="size-8 sm:size-9 rounded-[6px] bg-[#000000] border border-[#262626] flex items-center justify-center shrink-0 p-1.5">
               <svg viewBox="68 106 416 310" className="w-full h-full" fill="none">
                 <rect x="68" y="228" width="60" height="60" rx="6" fill="#E9E7E0" />
                 <rect x="132" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
@@ -212,17 +213,18 @@ export function AppShell({
                 <rect x="452" y="106" width="32" height="32" rx="4" fill="#c5ff4a" />
               </svg>
             </span>
-            <span className="text-white font-bold text-base sm:text-lg tracking-tight truncate max-w-[200px] sm:max-w-xs">
+            <span className="text-white font-bold text-sm sm:text-base tracking-tight truncate">
               {organizationName}
             </span>
           </div>
         </div>
 
-        <div className="flex items-center gap-2.5">
+        {/* Lado derecho: Preferencias + Configuración (shrink-0) */}
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           <PreferencesControls placement="down" />
           <Link
             href="/app/settings"
-            className="size-11 min-h-[44px] min-w-[44px] border border-[#262626] hover:border-[#383838] hover:text-[#c5ff4a] text-[#a3a3a3] bg-[#161616] rounded-[6px] transition-colors duration-150 flex items-center justify-center shrink-0 active:scale-95"
+            className="size-11 min-h-[44px] min-w-[44px] shrink-0 border border-[#262626] hover:border-[#383838] hover:text-[#c5ff4a] text-[#a3a3a3] bg-[#161616] rounded-[6px] transition-colors duration-150 flex items-center justify-center active:scale-95"
             title={settingsLabel}
             aria-label={settingsLabel}
           >
@@ -240,7 +242,7 @@ export function AppShell({
       </header>
 
       {/* 2. Cuerpo Principal */}
-      <div className="flex-1 flex items-start">
+      <div className="flex-1 flex items-start w-full max-w-full overflow-x-hidden">
         {/* Sidebar de Escritorio */}
         {desktopOpen && (
           <aside className="hidden md:flex w-64 flex-col shrink-0 border-r border-[#262626] p-5 bg-[#0c0c0c] sticky top-16 h-[calc(100dvh-4rem)] self-start overflow-hidden shadow-[4px_0_24px_rgba(0,0,0,0.5)]">
@@ -251,7 +253,7 @@ export function AppShell({
         {/* Drawer Móvil con Backdrop sólido y enfocado */}
         {mobileOpen && (
           <div className="md:hidden fixed inset-0 z-50 flex">
-            {/* Backdrop oscuro sólido (elimina transparencias desprolijas) */}
+            {/* Backdrop oscuro sólido */}
             <div
               className="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
               onClick={() => setMobileOpen(false)}
@@ -268,8 +270,8 @@ export function AppShell({
           </div>
         )}
 
-        {/* Contenido Principal */}
-        <main className="flex-1 min-w-0 p-4 md:p-8 w-full max-w-[1600px] mx-auto animate-smooth-in">
+        {/* Contenido Principal - Nunca desborda horizontalmente */}
+        <main className="flex-1 min-w-0 p-4 md:p-8 w-full max-w-[1600px] mx-auto overflow-x-hidden animate-smooth-in">
           {children}
         </main>
       </div>

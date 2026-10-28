@@ -79,7 +79,7 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
             aria-label="Panel de preferencias"
             className={`absolute right-0 ${
               placement === "up" ? "bottom-full mb-2" : "top-full mt-2"
-            } w-68 p-4 rounded-[6px] bg-[#121212] border border-[#262626] shadow-[0_16px_40px_rgba(0,0,0,0.85)] z-50 space-y-4 animate-smooth-in`}
+            } w-[calc(100vw-2rem)] max-w-[280px] p-4 rounded-[6px] bg-[#121212] border border-[#262626] shadow-[0_16px_40px_rgba(0,0,0,0.85)] z-50 space-y-4 animate-smooth-in`}
           >
             {/* Mode selection: Claro / Oscuro */}
             <div>
