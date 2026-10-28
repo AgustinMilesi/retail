@@ -1,25 +1,69 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { usePreferences, THEMES } from "@/components/PreferencesProvider";
 import { LOCALES } from "@/lib/i18n";
 
 export function PreferencesControls({ placement = "down" }: { placement?: "up" | "down" }) {
   const { theme, setTheme, mode, setMode, locale, setLocale, sound, setSound, t } = usePreferences();
   const [open, setOpen] = useState(false);
+  const [coords, setCoords] = useState<{ left: number; top?: number; bottom?: number; width: number } | null>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  const updatePosition = useCallback(() => {
+    if (!triggerRef.current) return;
+    const rect = triggerRef.current.getBoundingClientRect();
+    const padding = 12;
+    const panelWidth = Math.min(288, window.innerWidth - padding * 2);
+
+    // Compute left coordinate: default to aligning to trigger's right edge
+    let left = rect.right - panelWidth;
+    // Prevent clipping on the left edge (especially inside sidebars docked to the left wall):
+    if (left < padding) {
+      left = padding;
+    }
+    // Prevent clipping on the right edge:
+    if (left + panelWidth > window.innerWidth - padding) {
+      left = window.innerWidth - panelWidth - padding;
+    }
+
+    if (placement === "up") {
+      setCoords({
+        left,
+        bottom: window.innerHeight - rect.top + 8,
+        width: panelWidth,
+      });
+    } else {
+      setCoords({
+        left,
+        top: rect.bottom + 8,
+        width: panelWidth,
+      });
+    }
+  }, [placement]);
 
   useEffect(() => {
     if (!open) return;
+    updatePosition();
+
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
     };
     window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [open]);
+    window.addEventListener("resize", updatePosition);
+    window.addEventListener("scroll", updatePosition, true);
+
+    return () => {
+      window.removeEventListener("keydown", handleKey);
+      window.removeEventListener("resize", updatePosition);
+      window.removeEventListener("scroll", updatePosition, true);
+    };
+  }, [open, updatePosition]);
 
   return (
     <div className="relative">
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setOpen(!open)}
         className="flex items-center gap-2 text-xs font-sans text-[#a3a3a3] hover:text-white transition-all min-h-[40px] px-3 py-2 rounded-[6px] bg-[#161616] border border-[#262626] hover:border-[#383838] select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c5ff4a] active:scale-[0.98]"
@@ -71,15 +115,19 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
         </svg>
       </button>
 
-      {open && (
+      {open && coords && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
           <div
             role="dialog"
             aria-label="Panel de preferencias"
-            className={`absolute right-0 ${
-              placement === "up" ? "bottom-full mb-2" : "top-full mt-2"
-            } w-[calc(100vw-2rem)] max-w-[280px] p-4 rounded-[6px] bg-[#121212] border border-[#262626] shadow-[0_16px_40px_rgba(0,0,0,0.85)] z-50 space-y-4 animate-smooth-in`}
+            style={{
+              left: `${coords.left}px`,
+              top: coords.top !== undefined ? `${coords.top}px` : undefined,
+              bottom: coords.bottom !== undefined ? `${coords.bottom}px` : undefined,
+              width: `${coords.width}px`,
+            }}
+            className="fixed p-4 rounded-[6px] bg-[#121212] border border-[#262626] shadow-[0_16px_40px_rgba(0,0,0,0.85)] z-50 space-y-4 animate-smooth-in"
           >
             {/* Mode selection: Claro / Oscuro */}
             <div>
