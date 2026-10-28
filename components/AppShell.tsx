@@ -173,7 +173,7 @@ export function AppShell({
   return (
     <div className="min-h-screen flex flex-col bg-[#060606] text-white w-full max-w-full overflow-x-hidden">
       {/* 1. Header Superior Unificado con Botón Hamburguesa - Nunca desborda horizontalmente */}
-      <header className="sticky top-0 z-30 flex items-center justify-between px-3 sm:px-6 py-2.5 bg-[#0e0e0e] border-b border-[#262626] shrink-0 h-16 w-full max-w-full overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.6)]">
+      <header className="sticky top-0 z-40 flex items-center justify-between px-3 sm:px-6 py-2.5 bg-[#0e0e0e] border-b border-[#262626] shrink-0 h-16 w-full max-w-full shadow-[0_4px_24px_rgba(0,0,0,0.6)]">
         {/* Lado izquierdo: Botón Hamburguesa + Logo + Nombre (ocupa espacio restante y trunca si es necesario) */}
         <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 mr-2">
           {/* Botón Hamburguesa ergonómico (min 44x44px, shrink-0) */}
