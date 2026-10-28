@@ -146,7 +146,11 @@ export function NavLinks({ items, onItemClick }: { items: Item[]; onItemClick?: 
               <span className="truncate">{translatedLabel}</span>
             </span>
 
-            {item.badge ? (
+            {item.key === "arca" ? (
+              <span className="px-1.5 py-0.5 rounded-[4px] bg-[#c5ff4a]/20 text-[#c5ff4a] border border-[#c5ff4a]/40 text-[10px] font-mono font-bold tracking-wider shrink-0 uppercase">
+                AFIP
+              </span>
+            ) : item.badge ? (
               <span className="min-w-5 h-5 px-1.5 rounded-full bg-[#c5ff4a]/20 text-[#c5ff4a] border border-[#c5ff4a]/30 text-[11px] font-mono font-medium flex items-center justify-center shrink-0">
                 {item.badge}
               </span>

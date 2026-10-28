@@ -15,7 +15,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     }),
   ]);
 
-  const enabled = new Set(session.organization.enabledModules || [
+  const rawModules = session.organization.enabledModules || [
     "overview",
     "pos",
     "sales",
@@ -27,17 +27,21 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     "contacts",
     "forms",
     "arca",
-  ]);
+  ];
+
+  // Guarantee ARCA is always enabled and visible for all organizations
+  const enabled = new Set(rawModules);
+  enabled.add("arca");
 
   const allNavItems = [
     { href: "/app", key: "overview" as const, label: "Overview" },
     { href: "/app/pos", key: "pos" as const, label: "Punto de Venta" },
     { href: "/app/sales", key: "sales" as const, label: "Sales" },
     { href: "/app/products", key: "products" as const, label: "Products" },
-    { href: "/app/debtors", key: "debtors" as const, label: "Debtors" },
-    { href: "/app/expenses", key: "expenses" as const, label: "Expenses" },
-    { href: "/app/arca", key: "arca" as const, label: "Facturación ARCA" },
     { href: "/app/cash", key: "cash" as const, label: "Cash" },
+    { href: "/app/debtors", key: "debtors" as const, label: "Debtors" },
+    { href: "/app/arca", key: "arca" as const, label: "Facturación ARCA" },
+    { href: "/app/expenses", key: "expenses" as const, label: "Expenses" },
     { href: "/app/inbox", key: "inbox" as const, label: "Inbox", badge: unread > 0 ? unread : undefined },
     { href: "/app/contacts", key: "contacts" as const, label: "Contacts" },
     { href: "/app/forms", key: "forms" as const, label: "Forms" },
