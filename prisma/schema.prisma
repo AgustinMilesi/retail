@@ -111,7 +111,7 @@ model Organization {
   timezone           String   @default("America/Argentina/Buenos_Aires")
   allowNegativeStock Boolean  @default(false)
   saleCounter        Int      @default(0)
-  enabledModules     String[] @default(["overview", "sales", "products", "cash", "debtors", "expenses", "inbox", "contacts", "forms"])
+  enabledModules     String[] @default(["overview", "sales", "products", "cash", "debtors", "expenses", "inbox", "contacts", "forms", "arca"])
 
   memberships    Membership[]
   forms          Form[]
@@ -127,6 +127,8 @@ model Organization {
   invitations    Invitation[]
   expenses       Expense[]
   debtors        Debtor[]
+  arcaConfig     ArcaConfig?
+  invoices       Invoice[]
 }
 
 model Membership {
@@ -491,4 +493,48 @@ model DebtorPayment {
 
   @@index([debtorId])
 }
+
+// ---------------------------------------------------------------------------
+// Facturación Electrónica ARCA (ex-AFIP)
+// ---------------------------------------------------------------------------
+
+model ArcaConfig {
+  id             String       @id @default(cuid())
+  organizationId String       @unique
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  cuit           String?
+  ptoVta         Int          @default(1)
+  production     Boolean      @default(false)
+  certPem        String?      @db.Text
+  keyPem         String?      @db.Text
+  updatedAt      DateTime     @updatedAt
+  createdAt      DateTime     @default(now())
+
+  @@index([organizationId])
+}
+
+model Invoice {
+  id             String       @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  cuit           String
+  ptoVta         Int
+  cbteTipo       Int          @default(11) // 11 = Factura C, 6 = Factura B, 1 = Factura A
+  cbteNro        Int
+  cae            String
+  caeVto         String
+  fecha          String       // YYYY-MM-DD
+  importeCents   BigInt
+  concepto       String       @default("Ventas varias de mercadería")
+  metodoOrigen   String       @default("Mostrador")
+  docTipo        Int          @default(99) // 99 = Consumidor Final, 96 = DNI, 80 = CUIT
+  docNro         String       @default("0")
+  qrUrl          String       @db.Text
+  rawResponse    String?      @db.Text
+  createdAt      DateTime     @default(now())
+
+  @@unique([organizationId, ptoVta, cbteTipo, cbteNro])
+  @@index([organizationId, createdAt])
+}
+
 

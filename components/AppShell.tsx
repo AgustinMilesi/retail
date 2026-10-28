@@ -19,7 +19,8 @@ type ItemKey =
   | "forms"
   | "settings"
   | "debtors"
-  | "expenses";
+  | "expenses"
+  | "arca";
 
 type NavItem = {
   href: string;

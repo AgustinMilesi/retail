@@ -26,6 +26,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     "inbox",
     "contacts",
     "forms",
+    "arca",
   ]);
 
   const allNavItems = [
@@ -35,6 +36,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     { href: "/app/products", key: "products" as const, label: "Products" },
     { href: "/app/debtors", key: "debtors" as const, label: "Debtors" },
     { href: "/app/expenses", key: "expenses" as const, label: "Expenses" },
+    { href: "/app/arca", key: "arca" as const, label: "Facturación ARCA" },
     { href: "/app/cash", key: "cash" as const, label: "Cash" },
     { href: "/app/inbox", key: "inbox" as const, label: "Inbox", badge: unread > 0 ? unread : undefined },
     { href: "/app/contacts", key: "contacts" as const, label: "Contacts" },
